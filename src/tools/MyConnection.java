@@ -1,0 +1,36 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package tools;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import oracle.jdbc.pool.OracleDataSource;
+
+/**
+ *
+ * @author budiarti
+ */
+public class MyConnection {
+    private Connection connection;
+    public Connection getConnection() throws SQLException{
+    try{
+        OracleDataSource ods = new OracleDataSource();
+        ods.setDriverType("thin");
+        ods.setServerName("localhost");
+        ods.setPortNumber(1521);
+        ods.setServiceName("XE");
+        ods.setDatabaseName("Bengkel");
+        ods.setUser("system");
+        ods.setPassword("budiarti");
+        connection = ods.getConnection();
+        connection.createStatement().execute("alter session set "+"current schema_bengkel");
+    }
+    catch(SQLException e){
+        e.fillInStackTrace();
+    }
+    return connection;
+    }
+}
