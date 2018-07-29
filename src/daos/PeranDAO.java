@@ -5,10 +5,53 @@
  */
 package daos;
 
+import entities.Jenis;
+import entities.Peran;
+import java.sql.Connection;
+import java.util.List;
+
 /**
  *
  * @author budiarti
  */
 public class PeranDAO {
+    private final FunctionDAO fdao;
+
+    public PeranDAO(Connection connection) {
+        this.fdao = new FunctionDAO(connection);
+    }
+
+    public boolean insert(Peran peran) {
+        return this.fdao.executeDML("INSERT INTO Peran VALUES('"
+                + peran.getPeranId()+ "','" + peran.getPeranName()+ "')");
+    }
+
+    public boolean update(Peran peran) {
+        return this.fdao.executeDML("UPDATE Peran SET nama_peran='"
+                + peran.getPeranName() + "' WHERE peran_id='" +peran.getPeranId()+"'");
+    }
+
+    public boolean delete(int peranId) {
+        return this.fdao.executeDML("DELETE FROM Peran WHERE peran_id= '" + peranId+"'");
+    }
+
+    public List<Object[]> getAll() {
+        return this.fdao.getDatas("SELECT * FROM Peran");
+    }
+
+    public List<Object[]> getAllSort(String category, String sort) {
+        return this.fdao.getDatas("SELECT * FROM Peran ORDER BY " + category + " " + sort);
+    }
+
+    public List<Object[]> search(String category, String data) {
+        return this.fdao.getDatas("SELECT * FROM Peran WHERE " + category + " LIKE '%" + data + "%'");
+    }
     
+    public Object getById(int jenisId){
+        return this.fdao.getDataBy("SELECT * FROM jenis WHERE jenis_id="+jenisId+"'");
+    }
+    
+//    public String getAutoID(){
+//        return this.fdao.getAutoId("SELECT MAX(jenis_id)+1 AS MAXID FROM Jenis");
+//    }
 }

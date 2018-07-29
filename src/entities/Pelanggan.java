@@ -13,14 +13,14 @@ public class Pelanggan {
     private String pelangganId;
     private String pelangganName;
     private String pelangganAlamat;
-    private int pelangganTlp;
+    private String pelangganTlp;
     private String pelangganKeluhan;
     private Kendaraan noPolisi;
 
     public Pelanggan() {
     }
 
-    public Pelanggan(String pelangganId, String pelangganName, String pelangganAlamat, int pelangganTlp, String pelangganKeluhan, Kendaraan noPolisi) {
+    public Pelanggan(String pelangganId, String pelangganName, String pelangganAlamat, String pelangganTlp, String pelangganKeluhan, Kendaraan noPolisi) {
         this.pelangganId = pelangganId;
         this.pelangganName = pelangganName;
         this.pelangganAlamat = pelangganAlamat;
@@ -74,14 +74,14 @@ public class Pelanggan {
     /**
      * @return the pelangganTlp
      */
-    public int getPelangganTlp() {
+    public String getPelangganTlp() {
         return pelangganTlp;
     }
 
     /**
      * @param pelangganTlp the pelangganTlp to set
      */
-    public void setPelangganTlp(int pelangganTlp) {
+    public void setPelangganTlp(String pelangganTlp) {
         this.pelangganTlp = pelangganTlp;
     }
 

@@ -5,10 +5,52 @@
  */
 package daos;
 
+import entities.Jenis;
+import java.sql.Connection;
+import java.util.List;
+
 /**
  *
  * @author budiarti
  */
 public class JenisDAO {
+    private final FunctionDAO fdao;
+
+    public JenisDAO(Connection connection) {
+        this.fdao = new FunctionDAO(connection);
+    }
+
+    public boolean insert(Jenis jenis) {
+        return this.fdao.executeDML("INSERT INTO jenis VALUES('"
+                + jenis.getJenisId()+ "','" + jenis.getJenisName() + "')");
+    }
+
+    public boolean update(Jenis jenis) {
+        return this.fdao.executeDML("UPDATE jenis SET nama_jenis='"
+                + jenis.getJenisName() + "' WHERE jenis_id='" +jenis.getJenisId()+"'");
+    }
+
+    public boolean delete(int jenisId) {
+        return this.fdao.executeDML("DELETE FROM jenis WHERE jenis_id=" + jenisId+"'");
+    }
+
+    public List<Object[]> getAll() {
+        return this.fdao.getDatas("SELECT * FROM jenis");
+    }
+
+    public List<Object[]> getAllSort(String category, String sort) {
+        return this.fdao.getDatas("SELECT * FROM jenis ORDER BY " + category + " " + sort);
+    }
+
+    public List<Object[]> search(String category, String data) {
+        return this.fdao.getDatas("SELECT * FROM jenis WHERE " + category + " LIKE '%" + data + "%'");
+    }
     
+    public Object getById(int jenisId){
+        return this.fdao.getDataBy("SELECT * FROM jenis WHERE jenis_id= '"+jenisId+"'");
+    }
+    
+//    public String getAutoID(){
+//        return this.fdao.getAutoId("SELECT MAX(jenis_id)+1 AS MAXID FROM Jenis");
+//    }
 }
