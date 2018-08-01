@@ -257,14 +257,6 @@ public class PemasokView extends javax.swing.JInternalFrame {
         this.reset();
     }
 
-    /**
-     * fungsi save/update berdasarkan parameter tertentu
-     *
-     * @param countryId
-     * @param countryName
-     * @param region
-     * @param isSave
-     */
     public void saveOrEdit(String pelangganId, String pelangganNama, boolean isSave) {
         boolean flag = true;
         if (isSave) {
