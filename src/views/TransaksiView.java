@@ -5,17 +5,41 @@
  */
 package views;
 
+import controller.PegawaiController;
+import controller.PelangganController;
+import controller.TransaksiController;
+import java.sql.Connection;
+import java.util.List;
+
 /**
  *
  * @author budiarti
  */
 public class TransaksiView extends javax.swing.JInternalFrame {
+    
+    private final ViewProccess viewProccess;
+    private final TransaksiController transaksiController;
+    private final String[] header = {""};
+    private final String[] category = {""};
+    private final Connection connection;
+    private final List<Object[]> PgwTemp;
+    private final List<Object[]> PlgTemp;
 
     /**
      * Creates new form TransaksiView
      */
-    public TransaksiView() {
+    public TransaksiView(Connection connection) {
+        this.connection=connection;
         initComponents();
+        this.viewProccess = new ViewProccess();
+        this.transaksiController = new TransaksiController(connection);
+        this.PgwTemp = this.getDataPgw();
+        this.PlgTemp = this.getDataPlg();
+        this.loadSearchComboBox();
+        this.loadPgw();
+        this.loadPlg();
+        this.reset();
+        this.bindingTable();
     }
 
     /**
@@ -27,22 +51,22 @@ public class TransaksiView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         dropbtnTransaksi = new javax.swing.JButton();
         savebtnTransaksi = new javax.swing.JButton();
         idtxtfieldTransaksi = new javax.swing.JTextField();
-        idcomboPegawai = new javax.swing.JComboBox<>();
-        idcomboPelanggan = new javax.swing.JComboBox<>();
-        idcomboBarang = new javax.swing.JComboBox<>();
-        findcomboTransaksi = new javax.swing.JComboBox<>();
+        idcomboPegawai = new javax.swing.JComboBox<String>();
+        idcomboPelanggan = new javax.swing.JComboBox<String>();
+        jLabel6 = new javax.swing.JLabel();
+        findcomboTransaksi = new javax.swing.JComboBox<String>();
         findtxtfieldTransaksi = new javax.swing.JTextField();
         Find = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblTrans = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
@@ -54,67 +78,70 @@ public class TransaksiView extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Tanggal");
 
-        jLabel3.setText("Pegawai ID");
+        jLabel3.setText("Nama Pegawai");
 
-        jLabel4.setText("Pelanggan ID");
-
-        jLabel5.setText("Barang ID");
+        jLabel4.setText("Nama Pelanggan");
 
         dropbtnTransaksi.setText("Drop");
 
         savebtnTransaksi.setText("Save");
+
+        jLabel6.setText("-");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(161, 161, 161)
+                .addComponent(dropbtnTransaksi)
+                .addGap(18, 18, 18)
+                .addComponent(savebtnTransaksi)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(idcomboPegawai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(idtxtfieldTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(62, 62, 62)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idcomboBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(idcomboPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(idtxtfieldTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(dropbtnTransaksi)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(idcomboPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(savebtnTransaksi)))
-                .addContainerGap(151, Short.MAX_VALUE))
+                        .addComponent(idcomboPegawai, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel4)
-                    .addComponent(idtxtfieldTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(idcomboPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(idcomboPegawai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(idtxtfieldTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel5)
-                    .addComponent(idcomboBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(idcomboPegawai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel4)
+                    .addComponent(idcomboPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dropbtnTransaksi)
                     .addComponent(savebtnTransaksi))
@@ -123,24 +150,34 @@ public class TransaksiView extends javax.swing.JInternalFrame {
 
         Find.setText("Find");
 
+        tblTrans.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(tblTrans);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(findcomboTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(findcomboTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(findtxtfieldTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Find)
                 .addGap(22, 22, 22))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,11 +187,10 @@ public class TransaksiView extends javax.swing.JInternalFrame {
                     .addComponent(findcomboTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(findtxtfieldTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Find))
-                .addGap(13, 13, 13)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,7 +202,6 @@ public class TransaksiView extends javax.swing.JInternalFrame {
     private javax.swing.JButton dropbtnTransaksi;
     private javax.swing.JComboBox<String> findcomboTransaksi;
     private javax.swing.JTextField findtxtfieldTransaksi;
-    private javax.swing.JComboBox<String> idcomboBarang;
     private javax.swing.JComboBox<String> idcomboPegawai;
     private javax.swing.JComboBox<String> idcomboPelanggan;
     private javax.swing.JTextField idtxtfieldTransaksi;
@@ -174,9 +209,90 @@ public class TransaksiView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton savebtnTransaksi;
+    private javax.swing.JTable tblTrans;
     // End of variables declaration//GEN-END:variables
+
+    
+    private void bindingTable() {
+        this.viewProccess.viewTable(tblTrans, header,
+                this.transaksiController.bindingSort(category[0], "asc"));
+    }
+
+    public void search(String category, String data) {
+        this.viewProccess.viewTable(tblTrans, header, this.transaksiController.find(category, data));
+    }
+    
+    private void loadSearchComboBox() {
+        this.viewProccess.loadSearchComboBox(findcomboTransaksi, header);
+    }
+
+    private List<Object[]> getDataPgw() {
+        return new PegawaiController(connection).bindingSort("pegawai_id", "asc");
+    }
+
+    private void loadPgw() {
+        this.viewProccess.loadDetails(idcomboPegawai, this.getDataPgw(), 1);
+    }
+    
+    private String getPgwId(){
+        return this.viewProccess.getIdfromComboBox(this.PgwTemp, idcomboPegawai.getSelectedIndex());
+    }
+    private List<Object[]> getDataPlg() {
+        return new PelangganController(connection).bindingSort("pelanggan_id", "asc");
+    }
+
+    private void loadPlg() {
+        this.viewProccess.loadDetails(idcomboPegawai, this.getDataPgw(), 1);
+    }
+    
+    private String getPlgId(){
+        return this.viewProccess.getIdfromComboBox(this.PgwTemp, idcomboPegawai.getSelectedIndex());
+    }
+    
+     public void drop(String barangId) {
+        if (this.viewProccess.dropConfirm(this)) {
+            this.viewProccess.dropData(this, this.transaksiController.drop(barangId));
+        }
+        this.reset();
+    }
+
+    
+    public void saveOrEdit(String transId, String tanggal, String namaPL, String namaPG, boolean isSave) {
+        boolean flag = true;
+        if (isSave) {
+            flag = this.transaksiController.save(transId, tanggal, getPgwId(), getPlgId());
+        } else {
+            flag = this.transaksiController.edit(transId, tanggal, getPgwId(), getPlgId());
+        }
+        this.viewProccess.saveData(this, flag, isSave);
+        this.reset();
+    }
+
+    
+    public void mouseClick(int row) {
+        idtxtfieldTransaksi.setEnabled(false);
+        dropbtnTransaksi.setEnabled(true);
+        idtxtfieldTransaksi.setText(tblTrans.getValueAt(row, 0).toString());
+        jLabel6.setText(tblTrans.getValueAt(row, 1).toString());
+        idcomboPegawai.setSelectedItem(tblTrans.getValueAt(row, 2).toString());
+        idcomboPelanggan.setSelectedItem(tblTrans.getValueAt(row, 3).toString());
+    }
+
+    /**
+     * funsi reset komponen
+     */
+    public void reset() {
+        idtxtfieldTransaksi.setEnabled(true);
+        idtxtfieldTransaksi.setText("");
+        jLabel6.setText("-");
+        idcomboPegawai.setSelectedItem("");
+        idcomboPelanggan.setSelectedItem("");
+        findtxtfieldTransaksi.setText("");
+        this.bindingTable();
+        dropbtnTransaksi.setEnabled(false);
+    }
 }

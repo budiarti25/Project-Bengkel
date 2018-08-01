@@ -35,7 +35,7 @@
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="307" max="32767" attributes="0"/>
               <Component id="findcomboTransaksibarang" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="txtfieldFind" min="-2" pref="110" max="-2" attributes="0"/>
@@ -88,10 +88,10 @@
                               <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="idcomboTransaksi" min="-2" max="-2" attributes="0"/>
-                              <Component id="idcomboBarang" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtfieldJmlhBeli" min="-2" pref="135" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtfieldJmlhBeli" pref="135" max="32767" attributes="0"/>
+                              <Component id="idcomboBarang" alignment="0" max="32767" attributes="0"/>
+                              <Component id="idcomboTransaksi" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -117,7 +117,7 @@
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="idcomboTransaksi" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="7" max="32767" attributes="0"/>
+                  <EmptySpace pref="11" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="dropbtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="savebtn" alignment="3" min="-2" max="-2" attributes="0"/>

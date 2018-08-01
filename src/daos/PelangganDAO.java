@@ -39,19 +39,19 @@ public class PelangganDAO {
     }
 
     public List<Object[]> getAll() {
-        return this.fdao.getDatas("SELECT pelanggan_id, nama_pelanggan, alamat, no_tlp, keluhan, no_polisi from pelanggan");
+        return this.fdao.getDatas("SELECT pelanggan_id, nama_pelanggan, alamat, no_telp, keluhan, no_polisi from pelanggan");
     }
 
     public List<Object[]> getAllSort(String category, String sort) {
-        return this.fdao.getDatas("SELECT pelanggan_id, nama_pelanggan, alamat, no_tlp, keluhan, no_polisi from pelanggan ORDER BY " + category + " " + sort);
+        return this.fdao.getDatas("SELECT pelanggan_id, nama_pelanggan, alamat, no_telp, keluhan, no_polisi from pelanggan ORDER BY " + category + " " + sort);
     }
 
     public List<Object[]> search(String category, String data) {
-        return this.fdao.getDatas("SELECT pelanggan_id, nama_pelanggan, alamat, no_tlp, keluhan, no_polisi from pelanggan WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
+        return this.fdao.getDatas("SELECT pelanggan_id, nama_pelanggan, alamat, no_telp, keluhan, no_polisi from pelanggan WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
     }
     
     public Object[] getById(String barangId){
-        return this.fdao.getDataBy("SELECT pelanggan_id, nama_pelanggan, alamat, no_tlp, keluhan, no_polisi from pelanggan WHERE barang_id='"+barangId+"'");
+        return this.fdao.getDataBy("SELECT pelanggan_id, nama_pelanggan, alamat, no_telp, keluhan, no_polisi from pelanggan WHERE barang_id='"+barangId+"'");
     }
     
 //    public String getAutoID(){

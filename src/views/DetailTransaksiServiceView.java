@@ -9,12 +9,12 @@ package views;
  *
  * @author budiarti
  */
-public class DetailTransaksiService extends javax.swing.JInternalFrame {
+public class DetailTransaksiServiceView extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form DetailTransaksiService
      */
-    public DetailTransaksiService() {
+    public DetailTransaksiServiceView() {
         initComponents();
     }
 
@@ -31,11 +31,11 @@ public class DetailTransaksiService extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        idcomboService = new javax.swing.JComboBox<>();
-        idcomboTransaksi = new javax.swing.JComboBox<>();
+        idcomboService = new javax.swing.JComboBox<String>();
+        idcomboTransaksi = new javax.swing.JComboBox<String>();
         btnDrop = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
-        comboFind = new javax.swing.JComboBox<>();
+        comboFind = new javax.swing.JComboBox<String>();
         txtfieldFind = new javax.swing.JTextField();
         btnFind = new javax.swing.JButton();
 

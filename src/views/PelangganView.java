@@ -353,11 +353,7 @@ public class PelangganView extends javax.swing.JInternalFrame {
         this.reset();
     }
 
-    /**
-     * fungsi menampilkan data yg yg telah diinputkan ke tbl country pada jframe
-     *
-     * @param row
-     */
+    
     public void mouseClick(int row) {
         idtxtfieldPelanggan.setEnabled(false);
         dropbtnPelanggan.setEnabled(true);

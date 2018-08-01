@@ -33,11 +33,11 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtfieldJmlhBeli = new javax.swing.JTextField();
-        idcomboBarang = new javax.swing.JComboBox<>();
-        idcomboTransaksi = new javax.swing.JComboBox<>();
+        idcomboBarang = new javax.swing.JComboBox<String>();
+        idcomboTransaksi = new javax.swing.JComboBox<String>();
         dropbtn = new javax.swing.JButton();
         savebtn = new javax.swing.JButton();
-        findcomboTransaksibarang = new javax.swing.JComboBox<>();
+        findcomboTransaksibarang = new javax.swing.JComboBox<String>();
         txtfieldFind = new javax.swing.JTextField();
         btnFind = new javax.swing.JButton();
 
@@ -74,10 +74,10 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
                         .addGap(29, 29, 29)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idcomboTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(idcomboBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtfieldJmlhBeli, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtfieldJmlhBeli, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                            .addComponent(idcomboBarang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(idcomboTransaksi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(281, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -95,7 +95,7 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(idcomboTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dropbtn)
                     .addComponent(savebtn)))
@@ -120,7 +120,7 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(307, Short.MAX_VALUE)
                 .addComponent(findcomboTransaksibarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtfieldFind, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)

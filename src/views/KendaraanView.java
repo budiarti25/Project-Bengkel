@@ -297,14 +297,6 @@ public class KendaraanView extends javax.swing.JInternalFrame {
         this.reset();
     }
 
-    /**
-     * fungsi save/update berdasarkan parameter tertentu
-     *
-     * @param countryId
-     * @param countryName
-     * @param region
-     * @param isSave
-     */
     public void saveOrEdit(String noPol, String warna, String jenisId, boolean isSave) {
         boolean flag = true;
         if (isSave) {
@@ -316,11 +308,7 @@ public class KendaraanView extends javax.swing.JInternalFrame {
         this.reset();
     }
 
-    /**
-     * fungsi menampilkan data yg yg telah diinputkan ke tbl country pada jframe
-     *
-     * @param row
-     */
+   
     public void mouseClick(int row) {
         nopolisitxtfieldKendaraan.setEnabled(false);
         dropbtnKendaraan.setEnabled(true);

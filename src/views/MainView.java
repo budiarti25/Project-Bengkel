@@ -46,6 +46,9 @@ public class MainView extends javax.swing.JFrame {
         mnPemasok = new javax.swing.JMenuItem();
         mnService = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        mnTransaksi = new javax.swing.JMenuItem();
+        mnDTBarang = new javax.swing.JMenuItem();
+        mnDTS = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,7 +63,7 @@ public class MainView extends javax.swing.JFrame {
             .addGap(0, 516, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("File");
+        jMenu1.setText("Master");
 
         mnBarang.setText("Barang");
         mnBarang.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +123,35 @@ public class MainView extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Transaksi");
+
+        mnTransaksi.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        mnTransaksi.setText("Transaksi");
+        mnTransaksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnTransaksiActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnTransaksi);
+
+        mnDTBarang.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        mnDTBarang.setText("Detail Transaksi Barang");
+        mnDTBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnDTBarangActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnDTBarang);
+
+        mnDTS.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        mnDTS.setText("Detail Transaksi Service");
+        mnDTS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnDTSActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnDTS);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -167,6 +198,18 @@ public class MainView extends javax.swing.JFrame {
         this.viewProccess.callForm(dskbengkel, new ServiceView(connection));
     }//GEN-LAST:event_mnServiceActionPerformed
 
+    private void mnTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnTransaksiActionPerformed
+        this.viewProccess.callForm(dskbengkel, new TransaksiView(connection));
+    }//GEN-LAST:event_mnTransaksiActionPerformed
+
+    private void mnDTBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnDTBarangActionPerformed
+        this.viewProccess.callForm(dskbengkel, new DetailTransaksiBarangView());
+    }//GEN-LAST:event_mnDTBarangActionPerformed
+
+    private void mnDTSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnDTSActionPerformed
+        this.viewProccess.callForm(dskbengkel, new DetailTransaksiServiceView());
+    }//GEN-LAST:event_mnDTSActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -208,11 +251,14 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem mnBarang;
+    private javax.swing.JMenuItem mnDTBarang;
+    private javax.swing.JMenuItem mnDTS;
     private javax.swing.JMenuItem mnJenis;
     private javax.swing.JMenuItem mnKendaraan;
     private javax.swing.JMenuItem mnPegawai;
     private javax.swing.JMenuItem mnPelanggan;
     private javax.swing.JMenuItem mnPemasok;
     private javax.swing.JMenuItem mnService;
+    private javax.swing.JMenuItem mnTransaksi;
     // End of variables declaration//GEN-END:variables
 }

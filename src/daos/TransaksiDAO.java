@@ -33,7 +33,7 @@ public class TransaksiDAO {
                 +"' WHERE transaksi_id='" +transaksi.getTransaksiId()+"'");
     }
 
-    public boolean delete(int transaksiId) {
+    public boolean delete(String transaksiId) {
         return this.fdao.executeDML("DELETE FROM transaksi WHERE transaksi_id='" + transaksiId+"'");
     }
 
@@ -42,7 +42,7 @@ public class TransaksiDAO {
     }
 
     public List<Object[]> getAllSort(String category, String sort) {
-        return this.fdao.getDatas("SELECT  FROM transaksi ORDER BY " + category + " " + sort);
+        return this.fdao.getDatas("SELECT * FROM transaksi ORDER BY " + category + " " + sort);
     }
 
     public List<Object[]> search(String category, String data) {
@@ -57,7 +57,4 @@ public class TransaksiDAO {
 //        return this.fdao.getAutoId("SELECT MAX(transaksi_id)+1 AS MAXID FROM Transaksi");
 //    }
 
-    public boolean delete(String barangId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
