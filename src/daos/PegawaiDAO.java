@@ -23,13 +23,13 @@ public class PegawaiDAO {
     public boolean insert(Pegawai pegawai) {
         return this.fdao.executeDML("INSERT INTO Pegawai VALUES('"
                 + pegawai.getPegawaiId()+ "','" +pegawai.getPegawaiName()+"','"+pegawai.getPegawaiAlamat()
-                +"','"+pegawai.getPegawaiJenisKelamin()+"')");
+                +"','"+pegawai.getPegawaiJenisKelamin()+"','"+pegawai.getPeranId().getPeranId()+"')");
     }
 
     public boolean update(Pegawai pegawai) {
         return this.fdao.executeDML("UPDATE pegawai SET nama_pegawai='"
                 +pegawai.getPegawaiName()+"', alamat='"+pegawai.getPegawaiAlamat()
-                +"', jenis_kelamin='"+pegawai.getPegawaiJenisKelamin()+"' WHERE pegawai_id='"+pegawai.getPegawaiId()+ "'");
+                +"', jenis_kelamin='"+pegawai.getPegawaiJenisKelamin()+"', peran_id='"+pegawai.getPeranId().getPeranId()+"'WHERE pegawai_id='"+pegawai.getPegawaiId()+ "'");
     }
 
     public boolean delete(int pegawaiId) {

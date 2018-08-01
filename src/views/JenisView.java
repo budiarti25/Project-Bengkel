@@ -5,17 +5,32 @@
  */
 package views;
 
+import controller.JenisController;
+import java.sql.Connection;
+
+
 /**
  *
  * @author budiarti
  */
 public class JenisView extends javax.swing.JInternalFrame {
+    
+    private final ViewProccess viewProccess;
+    private final JenisController jenisController;
+    private final String[] header = {"Jenis Id", "Nama Jenis"};
+    private final String[] category = {"jenis_id", "nama_jenis"};
+    private final Connection connection;
 
     /**
      * Creates new form JenisView
      */
-    public JenisView() {
+    public JenisView(Connection connection) {
+        this.connection=connection;
         initComponents();
+        this.viewProccess = new ViewProccess();
+        this.jenisController = new JenisController(connection);
+        this.reset();
+        this.bindingTable();
     }
 
     /**
@@ -27,21 +42,253 @@ public class JenisView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        findcomboJenis = new javax.swing.JComboBox<String>();
+        findtxtfieldJenis = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        idtxtfieldJenis = new javax.swing.JTextField();
+        nametxtfieldJenis = new javax.swing.JTextField();
+        dropbtnJenis = new javax.swing.JButton();
+        savebtnJenis = new javax.swing.JButton();
+        btnFind = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblJenis = new javax.swing.JTable();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Jenis");
+
+        findcomboJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findcomboJenisActionPerformed(evt);
+            }
+        });
+
+        findtxtfieldJenis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                findtxtfieldJenisKeyPressed(evt);
+            }
+        });
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Detail"));
+
+        jLabel1.setText("Jenis ID");
+
+        jLabel2.setText("Nama Jenis");
+
+        dropbtnJenis.setText("Drop");
+        dropbtnJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dropbtnJenisActionPerformed(evt);
+            }
+        });
+
+        savebtnJenis.setText("Save");
+        savebtnJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savebtnJenisActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(dropbtnJenis)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(savebtnJenis))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nametxtfieldJenis, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                            .addComponent(idtxtfieldJenis))))
+                .addGap(177, 177, 177))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(idtxtfieldJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(nametxtfieldJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dropbtnJenis)
+                    .addComponent(savebtnJenis))
+                .addContainerGap())
+        );
+
+        btnFind.setText("Find");
+        btnFind.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFindActionPerformed(evt);
+            }
+        });
+
+        tblJenis.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tblJenis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblJenisMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblJenis);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(152, Short.MAX_VALUE)
+                .addComponent(findcomboJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(findtxtfieldJenis, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnFind)
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(findtxtfieldJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(findcomboJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFind))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void dropbtnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropbtnJenisActionPerformed
+        this.drop(idtxtfieldJenis.getText());
+    }//GEN-LAST:event_dropbtnJenisActionPerformed
+
+    private void findcomboJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findcomboJenisActionPerformed
+        this.search(this.viewProccess.getCategory(this.category, findcomboJenis), findtxtfieldJenis.getText());
+    }//GEN-LAST:event_findcomboJenisActionPerformed
+
+    private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
+        this.search(this.viewProccess.getCategory(this.category, findcomboJenis), findtxtfieldJenis.getText());
+    }//GEN-LAST:event_btnFindActionPerformed
+
+    private void savebtnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnJenisActionPerformed
+        this.saveOrEdit(idtxtfieldJenis.getText(), nametxtfieldJenis.getText(), idtxtfieldJenis.isEnabled());
+    }//GEN-LAST:event_savebtnJenisActionPerformed
+
+    private void findtxtfieldJenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findtxtfieldJenisKeyPressed
+        if (this.viewProccess.keyPressed(evt)) {
+            this.search(this.viewProccess.getCategory(this.category, findcomboJenis), findtxtfieldJenis.getText());
+        }
+    }//GEN-LAST:event_findtxtfieldJenisKeyPressed
+
+    private void tblJenisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblJenisMouseClicked
+        this.mouseClick(tblJenis.getSelectedRow());
+    }//GEN-LAST:event_tblJenisMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFind;
+    private javax.swing.JButton dropbtnJenis;
+    private javax.swing.JComboBox<String> findcomboJenis;
+    private javax.swing.JTextField findtxtfieldJenis;
+    private javax.swing.JTextField idtxtfieldJenis;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField nametxtfieldJenis;
+    private javax.swing.JButton savebtnJenis;
+    private javax.swing.JTable tblJenis;
     // End of variables declaration//GEN-END:variables
+
+    private void bindingTable() {
+        this.viewProccess.viewTable(tblJenis, header,
+                this.jenisController.bindingSort(category[0], "asc"));
+    }
+
+    public void search(String category, String data) {
+        this.viewProccess.viewTable(tblJenis, header, this.jenisController.find(category, data));
+    }
+    
+     public void drop(String jenisId) {
+        if (this.viewProccess.dropConfirm(this)) {
+            this.viewProccess.dropData(this, this.jenisController.drop(jenisId));
+        }
+        this.reset();
+    }
+
+    /**
+     * fungsi save/update berdasarkan parameter tertentu
+     *
+     * @param countryId
+     * @param countryName
+     * @param region
+     * @param isSave
+     */
+    public void saveOrEdit(String jenisId, String jenisNama, boolean isSave) {
+        boolean flag = true;
+        if (isSave) {
+            flag = this.jenisController.save(idtxtfieldJenis.getText(), nametxtfieldJenis.getText());
+        } else {
+            flag = this.jenisController.edit(idtxtfieldJenis.getText(), nametxtfieldJenis.getText());
+        }
+        this.viewProccess.saveData(this, flag, isSave);
+        this.reset();
+    }
+
+    /**
+     * fungsi menampilkan data yg yg telah diinputkan ke tbl country pada jframe
+     *
+     * @param row
+     */
+    public void mouseClick(int row) {
+        idtxtfieldJenis.setEnabled(false);
+        dropbtnJenis.setEnabled(true);
+        idtxtfieldJenis.setText(tblJenis.getValueAt(row, 0).toString());
+        nametxtfieldJenis.setText(tblJenis.getValueAt(row, 1).toString());
+    }
+
+    /**
+     * funsi reset komponen
+     */
+    public void reset() {
+        idtxtfieldJenis.setEnabled(true);
+        nametxtfieldJenis.setText("");
+        findtxtfieldJenis.setText("");
+        this.bindingTable();
+        dropbtnJenis.setEnabled(false);
+    }
 }

@@ -24,14 +24,14 @@ public class PelangganDAO {
         return this.fdao.executeDML("INSERT INTO Pelanggan VALUES('"
                 + pelanggan.getPelangganId()+ "','" + pelanggan.getPelangganName()
                 +"','"+pelanggan.getPelangganAlamat()+"','"+pelanggan.getPelangganTlp()
-                +"','"+pelanggan.getPelangganKeluhan()+"','"+pelanggan.getNoPolisi()+"')");
+                +"','"+pelanggan.getPelangganKeluhan()+"','"+pelanggan.getNoPolisi().getNoPolisi()+"')");
     }
 
     public boolean update(Pelanggan pelanggan) {
         return this.fdao.executeDML("UPDATE pelanggan SET nama_pelannggan='" 
                 + pelanggan.getPelangganName()+"', alamat='"+pelanggan.getPelangganAlamat()
                 +"',no_tlp='"+pelanggan.getPelangganTlp()+"',keluhan='"+pelanggan.getPelangganKeluhan()
-                +"',no_polisi='"+pelanggan.getNoPolisi()+"' WHERE pelanggan_id'"+ pelanggan.getPelangganId()+"'");
+                +"',no_polisi='"+pelanggan.getNoPolisi().getNoPolisi()+"' WHERE pelanggan_id'"+ pelanggan.getPelangganId()+"'");
     }
 
     public boolean delete(int pelangganId) {
@@ -39,19 +39,19 @@ public class PelangganDAO {
     }
 
     public List<Object[]> getAll() {
-        return this.fdao.getDatas("SELECT * FROM pelanggan");
+        return this.fdao.getDatas("SELECT pelanggan_id, nama_pelanggan, alamat, no_tlp, keluhan, no_polisi from pelanggan");
     }
 
     public List<Object[]> getAllSort(String category, String sort) {
-        return this.fdao.getDatas("SELECT * FROM pelanggan ORDER BY " + category + " " + sort);
+        return this.fdao.getDatas("SELECT pelanggan_id, nama_pelanggan, alamat, no_tlp, keluhan, no_polisi from pelanggan ORDER BY " + category + " " + sort);
     }
 
     public List<Object[]> search(String category, String data) {
-        return this.fdao.getDatas("SELECT * FROM pelanggan WHERE " + category + " LIKE '%" + data + "%'");
+        return this.fdao.getDatas("SELECT pelanggan_id, nama_pelanggan, alamat, no_tlp, keluhan, no_polisi from pelanggan WHERE " + category + " LIKE '%" + data + "%'");
     }
     
     public Object getById(int barangId){
-        return this.fdao.getDataBy("SELECT * FROM pelanggan WHERE barang_id="+barangId+"'");
+        return this.fdao.getDataBy("SELECT pelanggan_id, nama_pelanggan, alamat, no_tlp, keluhan, no_polisi from pelanggan WHERE barang_id="+barangId+"'");
     }
     
 //    public String getAutoID(){

@@ -5,6 +5,7 @@
  */
 package tools;
 
+import daos.PemasokDAO;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -16,5 +17,7 @@ public class ManualTester {
     public static void main(String[] args) throws SQLException {
         Connection connection=new MyConnection().getConnection();
         System.out.println(new MyConnection().getConnection());
+        
+        System.out.println(new PemasokDAO(connection).getAll().size());
     }
 }

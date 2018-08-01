@@ -5,17 +5,37 @@
  */
 package views;
 
+import controller.JenisController;
+import controller.KendaraanController;
+import java.sql.Connection;
+import java.util.List;
+
 /**
  *
  * @author budiarti
  */
 public class KendaraanView extends javax.swing.JInternalFrame {
+    
+    private final ViewProccess viewProccess;
+    private final KendaraanController kendaraanController;
+    private final String[] header = {"Nomer Polisi", "Warna", "Nama Jenis"};
+    private final String[] category = {"no_polisi", "warna", "nama_jenis"};
+    private final Connection connection;
+    private final List<Object[]>JenisTemp;
 
     /**
      * Creates new form KendaraanView
      */
-    public KendaraanView() {
+    public KendaraanView(Connection connection) {
+        this.connection=connection;
         initComponents();
+        this.viewProccess = new ViewProccess();
+        this.kendaraanController = new KendaraanController(connection);
+        this.JenisTemp = this.getDataJenis();
+        this.loadSearchComboBox();
+        this.loadJenis();
+        this.reset();
+        this.bindingTable();
     }
 
     /**
@@ -27,21 +47,297 @@ public class KendaraanView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jComboBox1 = new javax.swing.JComboBox<String>();
+        findcomboKendaraan = new javax.swing.JComboBox<String>();
+        findtxtfieldKendaraan = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        nopolisitxtfieldKendaraan = new javax.swing.JTextField();
+        warnatxtfieldKendaraan = new javax.swing.JTextField();
+        idcomboJenis = new javax.swing.JComboBox<String>();
+        dropbtnKendaraan = new javax.swing.JButton();
+        savebtnKendaraan = new javax.swing.JButton();
+        btnFind = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblKendaraan = new javax.swing.JTable();
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Kendaraan");
+
+        findcomboKendaraan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findcomboKendaraanActionPerformed(evt);
+            }
+        });
+
+        findtxtfieldKendaraan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findtxtfieldKendaraanActionPerformed(evt);
+            }
+        });
+        findtxtfieldKendaraan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                findtxtfieldKendaraanKeyPressed(evt);
+            }
+        });
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Detail"));
+
+        jLabel1.setText("No Polisi");
+
+        jLabel2.setText("Warna");
+
+        jLabel3.setText("Jenis");
+
+        dropbtnKendaraan.setText("Drop");
+        dropbtnKendaraan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dropbtnKendaraanActionPerformed(evt);
+            }
+        });
+
+        savebtnKendaraan.setText("Save");
+        savebtnKendaraan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savebtnKendaraanActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(41, 41, 41)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nopolisitxtfieldKendaraan)
+                    .addComponent(warnatxtfieldKendaraan, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addComponent(jLabel3)
+                .addGap(25, 25, 25)
+                .addComponent(idcomboJenis, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(dropbtnKendaraan)
+                .addGap(25, 25, 25)
+                .addComponent(savebtnKendaraan)
+                .addGap(137, 137, 137))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(nopolisitxtfieldKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(idcomboJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(warnatxtfieldKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dropbtnKendaraan)
+                    .addComponent(savebtnKendaraan)))
+        );
+
+        btnFind.setText("Find");
+        btnFind.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFindActionPerformed(evt);
+            }
+        });
+
+        tblKendaraan.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tblKendaraan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblKendaraanMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblKendaraan);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(findcomboKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(findtxtfieldKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnFind)
+                .addGap(28, 28, 28))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 10, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(findcomboKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(findtxtfieldKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFind))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void savebtnKendaraanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnKendaraanActionPerformed
+        this.saveOrEdit(nopolisitxtfieldKendaraan.getText(), warnatxtfieldKendaraan.getText(),
+                Integer.toString(idcomboJenis.getSelectedIndex()), nopolisitxtfieldKendaraan.isEnabled());
+    }//GEN-LAST:event_savebtnKendaraanActionPerformed
+
+    private void dropbtnKendaraanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropbtnKendaraanActionPerformed
+        this.drop(nopolisitxtfieldKendaraan.getText());
+    }//GEN-LAST:event_dropbtnKendaraanActionPerformed
+
+    private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
+        this.search(this.viewProccess.getCategory(this.category, findcomboKendaraan), findtxtfieldKendaraan.getText());
+    }//GEN-LAST:event_btnFindActionPerformed
+
+    private void findcomboKendaraanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findcomboKendaraanActionPerformed
+        this.search(this.viewProccess.getCategory(this.category, findcomboKendaraan), findtxtfieldKendaraan.getText());
+    }//GEN-LAST:event_findcomboKendaraanActionPerformed
+
+    private void findtxtfieldKendaraanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findtxtfieldKendaraanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_findtxtfieldKendaraanActionPerformed
+
+    private void findtxtfieldKendaraanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findtxtfieldKendaraanKeyPressed
+        if (this.viewProccess.keyPressed(evt)) {
+            this.search(this.viewProccess.getCategory(this.category, findcomboKendaraan), findtxtfieldKendaraan.getText());
+    }     
+    }//GEN-LAST:event_findtxtfieldKendaraanKeyPressed
+
+    private void tblKendaraanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKendaraanMouseClicked
+        this.mouseClick(tblKendaraan.getSelectedRow());
+    }//GEN-LAST:event_tblKendaraanMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFind;
+    private javax.swing.JButton dropbtnKendaraan;
+    private javax.swing.JComboBox<String> findcomboKendaraan;
+    private javax.swing.JTextField findtxtfieldKendaraan;
+    private javax.swing.JComboBox<String> idcomboJenis;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField nopolisitxtfieldKendaraan;
+    private javax.swing.JButton savebtnKendaraan;
+    private javax.swing.JTable tblKendaraan;
+    private javax.swing.JTextField warnatxtfieldKendaraan;
     // End of variables declaration//GEN-END:variables
+
+
+    private void bindingTable() {
+        this.viewProccess.viewTable(tblKendaraan, header,
+                this.kendaraanController.bindingSort(category[0], "asc"));
+    }
+
+    public void search(String category, String data) {
+        this.viewProccess.viewTable(tblKendaraan, header, this.kendaraanController.find(category, data));
+    }
+    
+    private void loadSearchComboBox() {
+        this.viewProccess.loadSearchComboBox(findcomboKendaraan, header);
+    }
+
+    private List<Object[]> getDataJenis() {
+        return new JenisController(connection).bindingSort("jenis_id", "asc");
+    }
+
+    private void loadJenis() {
+        this.viewProccess.loadDetails(idcomboJenis, this.getDataJenis(), 1);
+    }
+    
+    private String getJenisId(){
+        return this.viewProccess.getIdfromComboBox(this.JenisTemp, idcomboJenis.getSelectedIndex());
+    }
+    
+     public void drop(String no_polisi) {
+        if (this.viewProccess.dropConfirm(this)) {
+            this.viewProccess.dropData(this, this.kendaraanController.drop(no_polisi));
+        }
+        this.reset();
+    }
+
+    /**
+     * fungsi save/update berdasarkan parameter tertentu
+     *
+     * @param countryId
+     * @param countryName
+     * @param region
+     * @param isSave
+     */
+    public void saveOrEdit(String noPol, String warna, String jenisId, boolean isSave) {
+        boolean flag = true;
+        if (isSave) {
+            flag = this.kendaraanController.save(nopolisitxtfieldKendaraan.getText(), warnatxtfieldKendaraan.getText(), this.getJenisId());
+        } else {
+            flag = this.kendaraanController.edit(nopolisitxtfieldKendaraan.getText(), warnatxtfieldKendaraan.getText(), this.getJenisId());
+        }
+        this.viewProccess.saveData(this, flag, isSave);
+        this.reset();
+    }
+
+    /**
+     * fungsi menampilkan data yg yg telah diinputkan ke tbl country pada jframe
+     *
+     * @param row
+     */
+    public void mouseClick(int row) {
+        nopolisitxtfieldKendaraan.setEnabled(false);
+        dropbtnKendaraan.setEnabled(true);
+        nopolisitxtfieldKendaraan.setText(tblKendaraan.getValueAt(row, 0).toString());
+        warnatxtfieldKendaraan.setText(tblKendaraan.getValueAt(row, 1).toString());
+        idcomboJenis.setSelectedItem(tblKendaraan.getValueAt(row, 2).toString());
+    }
+
+    /**
+     * funsi reset komponen
+     */
+    public void reset() {
+        nopolisitxtfieldKendaraan.setEnabled(true);
+        warnatxtfieldKendaraan.setText("");
+        idcomboJenis.setSelectedItem("");
+        findtxtfieldKendaraan.setText("");
+        this.bindingTable();
+        dropbtnKendaraan.setEnabled(false);
+    }
 }

@@ -23,13 +23,13 @@ public class BarangDAO {
     public boolean insert(Barang barang) {
         return this.fdao.executeDML("INSERT INTO Barang VALUES('"
                 + barang.getBarangId()+ "','" + barang.getBarangName()+"',"+barang.getBarangStok()
-                +","+barang.getBarangHarga()+","+barang.getPemasokId()+")");
+                +","+barang.getBarangHarga()+","+barang.getPemasok().getPemasokId()+")");
     }
 
     public boolean update(Barang barang) {
         return this.fdao.executeDML("UPDATE Barang SET nama_barang='"
                 + barang.getBarangName() + "', stok_barang="
-                + barang.getBarangStok() + ", harga_barang="+barang.getBarangHarga()+", pemasok_id="+barang.getPemasokId()
+                + barang.getBarangStok() + ", harga_barang="+barang.getBarangHarga()+", pemasok_id="+barang.getPemasok().getPemasokId()
                 +" WHERE barang_id='" +barang.getBarangId()+"'");
     }
 
@@ -38,19 +38,23 @@ public class BarangDAO {
     }
 
     public List<Object[]> getAll() {
-        return this.fdao.getDatas("SELECT * FROM barang");
+        return this.fdao.getDatas("SELECT b.barang_id, b.nama_barang, b.stok_barang,b.harga_barang, p.nama_pemasok"
+                + "FROM barang b join pemasok p on b.pemasok_id=p.pemasok_id");
     }
 
     public List<Object[]> getAllSort(String category, String sort) {
-        return this.fdao.getDatas("SELECT * FROM barang ORDER BY " + category + " " + sort);
+        return this.fdao.getDatas("SELECT b.barang_id, b.nama_barang, b.stok_barang,b.harga_barang, p.nama_pemasok "
+                + "FROM barang b join pemasok p on b.pemasok_id=p.pemasok_id  ORDER BY " + category + " " + sort);
     }
 
     public List<Object[]> search(String category, String data) {
-        return this.fdao.getDatas("SELECT * FROM barang WHERE " + category + " LIKE '%" + data + "%'");
+        return this.fdao.getDatas("SELECT b.barang_id, b.nama_barang, b.stok_barang,b.harga_barang, p.nama_pemasok "
+                + "FROM barang b join pemasok p on b.pemasok_id=p.pemasok_id   WHERE " + category + " LIKE '%" + data + "%'");
     }
     
     public Object getById(int barangId){
-        return this.fdao.getDataBy("SELECT * FROM barang WHERE barang_id="+barangId+"'");
+        return this.fdao.getDataBy("SELECT SELECT b.barang_id, b.nama_barang, b.stok_barang,b.harga_barang, p.nama_pemasok "
+                + "FROM barang b join pemasok p on b.pemasok_id=p.pemasok_id WHERE barang_id="+barangId+"'");
     }
     
 //    public String getAutoID(){

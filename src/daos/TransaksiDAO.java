@@ -22,14 +22,14 @@ public class TransaksiDAO {
 
     public boolean insert(Transaksi transaksi) {
         return this.fdao.executeDML("INSERT INTO Transaksi VALUES('"
-                + transaksi.getTransaksiId()+ "','" +transaksi.getTanggal()+"','"+transaksi.getPegawaiId()
-                +"','"+transaksi.getPelangganId()+"','"+transaksi.getBarangId()+"')");
+                + transaksi.getTransaksiId()+ "','" +transaksi.getTanggal()+"','"+transaksi.getPegawaiId().getPegawaiId()
+                +"','"+transaksi.getPelangganId().getPelangganId()+"','"+transaksi.getBarangId().getBarangId()+"')");
     }
 
     public boolean update(Transaksi transaksi) {
         return this.fdao.executeDML("UPDATE Transaksi SET tanggal='"
                 + transaksi.getTanggal() + "', pegawai_id='"
-                + transaksi.getPegawaiId() + "', pelanggan_id='"+transaksi.getPelangganId()+"', barang_id='"+transaksi.getBarangId()
+                + transaksi.getPegawaiId().getPegawaiId() + "', pelanggan_id='"+transaksi.getPelangganId().getPelangganId()+"', barang_id='"+transaksi.getBarangId().getBarangId()
                 +"' WHERE transaksi_id='" +transaksi.getTransaksiId()+"'");
     }
 
@@ -42,7 +42,7 @@ public class TransaksiDAO {
     }
 
     public List<Object[]> getAllSort(String category, String sort) {
-        return this.fdao.getDatas("SELECT * FROM transaksi ORDER BY " + category + " " + sort);
+        return this.fdao.getDatas("SELECT  FROM transaksi ORDER BY " + category + " " + sort);
     }
 
     public List<Object[]> search(String category, String data) {

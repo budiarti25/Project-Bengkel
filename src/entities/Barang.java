@@ -15,17 +15,17 @@ public class Barang {
     private String barangName;
     private int barangStok;
     private int barangHarga;
-    private Pemasok pemasokId;
+    private Pemasok pemasok;
 
     public Barang() {
     }
 
-    public Barang(String barangId, String barangName, int barangStok, int barangHarga, Pemasok pemasokId) {
+    public Barang(String barangId, String barangName, int barangStok, int barangHarga, Pemasok pemasok) {
         this.barangId = barangId;
         this.barangName = barangName;
         this.barangStok = barangStok;
         this.barangHarga = barangHarga;
-        this.pemasokId = pemasokId;
+        this.pemasok = pemasok;
     }
 
     /**
@@ -87,15 +87,15 @@ public class Barang {
     /**
      * @return the pemasokId
      */
-    public Pemasok getPemasokId() {
-        return pemasokId;
+    public Pemasok getPemasok() {
+        return pemasok;
     }
 
     /**
      * @param pemasokId the pemasokId to set
      */
-    public void setPemasokId(Pemasok pemasokId) {
-        this.pemasokId = pemasokId;
+    public void setPemasok(Pemasok pemasok) {
+        this.pemasok = pemasok;
     }
     
 }

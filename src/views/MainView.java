@@ -5,17 +5,25 @@
  */
 package views;
 
+import java.sql.Connection;
+import tools.MyConnection;
+
 /**
  *
  * @author budiarti
  */
 public class MainView extends javax.swing.JFrame {
+    
+    private final Connection connection;
+    private final ViewProccess viewProccess;
 
     /**
      * Creates new form MainView
      */
     public MainView() {
         initComponents();
+        this.connection = new MyConnection().getConnection();
+        this.viewProccess= new ViewProccess();
     }
 
     /**
@@ -27,21 +35,150 @@ public class MainView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dskbengkel = new javax.swing.JDesktopPane();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        mnBarang = new javax.swing.JMenuItem();
+        mnJenis = new javax.swing.JMenuItem();
+        mnKendaraan = new javax.swing.JMenuItem();
+        mnPegawai = new javax.swing.JMenuItem();
+        mnPelanggan = new javax.swing.JMenuItem();
+        mnPemasok = new javax.swing.JMenuItem();
+        mnPeran = new javax.swing.JMenuItem();
+        mnService = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout dskbengkelLayout = new javax.swing.GroupLayout(dskbengkel);
+        dskbengkel.setLayout(dskbengkelLayout);
+        dskbengkelLayout.setHorizontalGroup(
+            dskbengkelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 713, Short.MAX_VALUE)
+        );
+        dskbengkelLayout.setVerticalGroup(
+            dskbengkelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 516, Short.MAX_VALUE)
+        );
+
+        jMenu1.setText("File");
+
+        mnBarang.setText("Barang");
+        mnBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnBarangActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnBarang);
+
+        mnJenis.setText("Jenis");
+        mnJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnJenisActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnJenis);
+
+        mnKendaraan.setText("Kendaraan");
+        mnKendaraan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnKendaraanActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnKendaraan);
+
+        mnPegawai.setText("Pegawai");
+        mnPegawai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnPegawaiActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnPegawai);
+
+        mnPelanggan.setText("Pelanggan");
+        mnPelanggan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnPelangganActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnPelanggan);
+
+        mnPemasok.setText("Pemasok");
+        mnPemasok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnPemasokActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnPemasok);
+
+        mnPeran.setText("Peran");
+        mnPeran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnPeranActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnPeran);
+
+        mnService.setText("Service");
+        mnService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnServiceActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnService);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(dskbengkel)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(dskbengkel)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnBarangActionPerformed
+       this.viewProccess.callForm(dskbengkel, new BarangView(connection));
+    }//GEN-LAST:event_mnBarangActionPerformed
+
+    private void mnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnJenisActionPerformed
+        this.viewProccess.callForm(dskbengkel, new BarangView(connection));
+    }//GEN-LAST:event_mnJenisActionPerformed
+
+    private void mnKendaraanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnKendaraanActionPerformed
+        this.viewProccess.callForm(dskbengkel, new BarangView(connection));
+    }//GEN-LAST:event_mnKendaraanActionPerformed
+
+    private void mnPegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnPegawaiActionPerformed
+        this.viewProccess.callForm(dskbengkel, new BarangView(connection));
+    }//GEN-LAST:event_mnPegawaiActionPerformed
+
+    private void mnPelangganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnPelangganActionPerformed
+        this.viewProccess.callForm(dskbengkel, new BarangView(connection));
+    }//GEN-LAST:event_mnPelangganActionPerformed
+
+    private void mnPemasokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnPemasokActionPerformed
+        this.viewProccess.callForm(dskbengkel, new BarangView(connection));
+    }//GEN-LAST:event_mnPemasokActionPerformed
+
+    private void mnPeranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnPeranActionPerformed
+        this.viewProccess.callForm(dskbengkel, new BarangView(connection));
+    }//GEN-LAST:event_mnPeranActionPerformed
+
+    private void mnServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnServiceActionPerformed
+        this.viewProccess.callForm(dskbengkel, new BarangView(connection));
+    }//GEN-LAST:event_mnServiceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +216,17 @@ public class MainView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane dskbengkel;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem mnBarang;
+    private javax.swing.JMenuItem mnJenis;
+    private javax.swing.JMenuItem mnKendaraan;
+    private javax.swing.JMenuItem mnPegawai;
+    private javax.swing.JMenuItem mnPelanggan;
+    private javax.swing.JMenuItem mnPemasok;
+    private javax.swing.JMenuItem mnPeran;
+    private javax.swing.JMenuItem mnService;
     // End of variables declaration//GEN-END:variables
 }

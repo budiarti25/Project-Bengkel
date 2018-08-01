@@ -22,13 +22,13 @@ public class KendaraanDAO {
 
     public boolean insert(Kendaraan kendaraan) {
         return this.fdao.executeDML("INSERT INTO Kendaraan VALUES('"
-                + kendaraan.getNoPolisi()+ "','" + kendaraan.getWarnaKendaraan()+"','"+kendaraan.getJenisId()+"')");
+                + kendaraan.getNoPolisi()+ "','" + kendaraan.getWarnaKendaraan()+"','"+kendaraan.getJenisId().getJenisId()+"')");
     }
 
     public boolean update(Kendaraan kendaraan) {
-        return this.fdao.executeDML("UPDATE Kendaraan SET warna_kendaraan='"
+        return this.fdao.executeDML("UPDATE Kendaraan SET warna='"
                 + kendaraan.getWarnaKendaraan() + "', jenis_id='"
-                + kendaraan.getJenisId() +"' WHERE no_polisi='" +kendaraan.getNoPolisi()+"'");
+                + kendaraan.getJenisId().getJenisId() +"' WHERE no_polisi='" +kendaraan.getNoPolisi()+"'");
     }
 
     public boolean delete(int noPolisi) {
@@ -36,19 +36,19 @@ public class KendaraanDAO {
     }
 
     public List<Object[]> getAll() {
-        return this.fdao.getDatas("SELECT * FROM kendaraan");
+        return this.fdao.getDatas("SELECT k.no_polisi, k.warna, j.nama_jenis FROM kendaraan k join jenis j on k.jenis_id=j.jenis_id");
     }
 
     public List<Object[]> getAllSort(String category, String sort) {
-        return this.fdao.getDatas("SELECT * FROM kendaraan ORDER BY " + category + " " + sort);
+        return this.fdao.getDatas("SELECT k.no_polisi, k.warna, j.nama_jenis FROM kendaraan k join jenis j on k.jenis_id=j.jenis_id ORDER BY " + category + " " + sort);
     }
 
     public List<Object[]> search(String category, String data) {
-        return this.fdao.getDatas("SELECT * FROM kendraan WHERE " + category + " LIKE '%" + data + "%'");
+        return this.fdao.getDatas("SELECT k.no_polisi, k.warna, j.nama_jenis FROM kendaraan k join jenis j on k.jenis_id=j.jenis_id WHERE " + category + " LIKE '%" + data + "%'");
     }
     
-    public Object getById(int noPolisi){
-        return this.fdao.getDataBy("SELECT * FROM kendaraan WHERE no_polisi="+noPolisi+"'");
+    public Object getById(String noPolisi){
+        return this.fdao.getDataBy("SELECT k.no_polisi, k.warna, j.nama_jenis FROM kendaraan k join jenis j on k.jenis_id=j.jenis_id WHERE no_polisi='"+noPolisi+"'");
     }
     
 //    public String getAutoID(){

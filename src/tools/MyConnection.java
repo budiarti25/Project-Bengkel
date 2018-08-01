@@ -15,7 +15,7 @@ import oracle.jdbc.pool.OracleDataSource;
  */
 public class MyConnection {
     private Connection connection;
-    public Connection getConnection() throws SQLException{
+    public Connection getConnection(){
     try{
         OracleDataSource ods = new OracleDataSource();
         ods.setDriverType("thin");
