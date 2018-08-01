@@ -31,7 +31,7 @@ public class JenisController {
     }
 
     public boolean drop(String jenisId) {
-        return this.jdao.delete(Integer.parseInt(jenisId));
+        return this.jdao.delete(jenisId);
     }
 
     public List<Object[]> binding() {
@@ -47,6 +47,6 @@ public class JenisController {
     }
 
     public Object findById(String jenisId) {
-        return this.jdao.getById(Integer.parseInt(jenisId));
+        return this.jdao.getById(jenisId);
     }
 }

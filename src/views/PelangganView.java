@@ -266,10 +266,10 @@ public class PelangganView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_dropbtnPelangganActionPerformed
 
     private void savebtnPelangganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnPelangganActionPerformed
-        this.saveOrEdit(idtxtfieldPelanggan.getText(), namatxtfieldPelanggan.getText(), 
-                alamattxtfieldPelanggan.getText(), telepontxtfieldPelanggan.getText(),
-                keluhantxtfieldPelanggan.getText(), Integer.toString(nopolisicomboKendaraan.getSelectedIndex()),
-                idtxtfieldPelanggan.isEnabled());
+//        this.saveOrEdit(idtxtfieldPelanggan.getText(), namatxtfieldPelanggan.getText(), 
+//                alamattxtfieldPelanggan.getText(), telepontxtfieldPelanggan.getText(),
+//                keluhantxtfieldPelanggan.getText(), Integer.toString(nopolisicomboKendaraan.getSelectedIndex()),
+//                idtxtfieldPelanggan.isEnabled());
     }//GEN-LAST:event_savebtnPelangganActionPerformed
 
     private void findtxtfieldPelangganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findtxtfieldPelangganKeyPressed
@@ -340,16 +340,14 @@ public class PelangganView extends javax.swing.JInternalFrame {
     }
 
     
-    public void saveOrEdit(String pelangganId, String pelangganNama, String alamat, String tlp, String keluhan, String noPol, boolean isSave) {
+    public void saveOrEdit(String pelangganId, String pelangganNama, String alamat, String tlp, String keluhan, String noPol, String jenisId, boolean isSave) {
         boolean flag = true;
         if (isSave) {
-            flag = this.pelangganController.save(idtxtfieldPelanggan.getText(), namatxtfieldPelanggan.getText(), 
-                    alamattxtfieldPelanggan.getText(), telepontxtfieldPelanggan.getName(), 
-                    keluhantxtfieldPelanggan.getText(),this.getPolId());
+            flag = this.pelangganController.save(pelangganId, pelangganNama, 
+                    alamat, tlp, keluhan,this.getPolId(),jenisId);
         } else {
-            flag = this.pelangganController.edit(idtxtfieldPelanggan.getText(), namatxtfieldPelanggan.getText(), 
-                    alamattxtfieldPelanggan.getText(), telepontxtfieldPelanggan.getName(), 
-                    keluhantxtfieldPelanggan.getText(),this.getPolId());
+            flag = this.pelangganController.edit(pelangganId, pelangganNama, 
+                    alamat, tlp, keluhan,this.getPolId(),jenisId);
         }
         this.viewProccess.saveData(this, flag, isSave);
         this.reset();

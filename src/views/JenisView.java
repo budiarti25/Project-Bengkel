@@ -29,6 +29,7 @@ public class JenisView extends javax.swing.JInternalFrame {
         initComponents();
         this.viewProccess = new ViewProccess();
         this.jenisController = new JenisController(connection);
+        this.loadSearchComboBox();
         this.reset();
         this.bindingTable();
     }
@@ -243,21 +244,20 @@ public class JenisView extends javax.swing.JInternalFrame {
         this.viewProccess.viewTable(tblJenis, header, this.jenisController.find(category, data));
     }
     
-     public void drop(String jenisId) {
+    
+    public void loadSearchComboBox() {
+        this.viewProccess.loadSearchComboBox(findcomboJenis, header);
+    }
+    
+    
+    public void drop(String jenisId) {
         if (this.viewProccess.dropConfirm(this)) {
             this.viewProccess.dropData(this, this.jenisController.drop(jenisId));
         }
         this.reset();
     }
 
-    /**
-     * fungsi save/update berdasarkan parameter tertentu
-     *
-     * @param countryId
-     * @param countryName
-     * @param region
-     * @param isSave
-     */
+    
     public void saveOrEdit(String jenisId, String jenisNama, boolean isSave) {
         boolean flag = true;
         if (isSave) {
@@ -287,8 +287,10 @@ public class JenisView extends javax.swing.JInternalFrame {
     public void reset() {
         idtxtfieldJenis.setEnabled(true);
         nametxtfieldJenis.setText("");
+        idtxtfieldJenis.setText("");
         findtxtfieldJenis.setText("");
         this.bindingTable();
         dropbtnJenis.setEnabled(false);
+            
     }
 }

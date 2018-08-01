@@ -26,20 +26,17 @@ public class PegawaiController {
         this.peranDAO = new PeranDAO(connection);
     }
 
-    public boolean save(String pegawaiId, String pegawaiName, String pegawaiAlamat, String pegawaiJenisKelamin, String peranId) {
-        Object[] object = (Object[])this.peranDAO.getById(Integer.parseInt(peranId));
-        Peran peran = new Peran((String)object[0], (String)object[1]);
-        return this.pegawaiDAO.insert((new Pegawai(pegawaiId, pegawaiName, pegawaiAlamat, pegawaiJenisKelamin, peran)));
+    public boolean save(String pegawaiId, String pegawaiName, String pegawaiAlamat, String pegawaiJenisKelamin) {
+        return this.pegawaiDAO.insert((new Pegawai(pegawaiId, pegawaiName, pegawaiAlamat, pegawaiJenisKelamin)));
     }
 
-    public boolean edit(String pegawaiId, String pegawaiName, String pegawaiAlamat, String pegawaiJenisKelamin, String peranId) {
-        Peran peran = (Peran) this.peranDAO.getById(Integer.parseInt(peranId));
-        return this.pegawaiDAO.update((new Pegawai(pegawaiId, pegawaiName, pegawaiAlamat, pegawaiJenisKelamin, peran)));
+    public boolean edit(String pegawaiId, String pegawaiName, String pegawaiAlamat, String pegawaiJenisKelamin) {
+        return this.pegawaiDAO.update((new Pegawai(pegawaiId, pegawaiName, pegawaiAlamat, pegawaiJenisKelamin)));
 
     }
 
     public boolean drop(String pegawaiId) {
-        return this.pegawaiDAO.delete(Integer.parseInt(pegawaiId));
+        return this.pegawaiDAO.delete(pegawaiId);
     }
 
     public List<Object[]> binding() {
@@ -55,6 +52,6 @@ public class PegawaiController {
     }
 
     public Object findById(String pegawaiId) {
-        return this.pegawaiDAO.getById(Integer.parseInt(pegawaiId));
+        return this.pegawaiDAO.getById(pegawaiId);
     }
 }

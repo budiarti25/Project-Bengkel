@@ -31,7 +31,7 @@ public class PeranController {
     }
 
     public boolean drop(String peranId) {
-        return this.peranDAO.delete(Integer.parseInt(peranId));
+        return this.peranDAO.delete(peranId);
     }
 
     public List<Object[]> binding() {
@@ -47,6 +47,6 @@ public class PeranController {
     }
 
     public Object findById(String peranId) {
-        return this.peranDAO.getById(Integer.parseInt(peranId));
+        return this.peranDAO.getById(peranId);
     }
 }

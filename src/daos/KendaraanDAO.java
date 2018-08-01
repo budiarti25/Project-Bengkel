@@ -31,8 +31,8 @@ public class KendaraanDAO {
                 + kendaraan.getJenisId().getJenisId() +"' WHERE no_polisi='" +kendaraan.getNoPolisi()+"'");
     }
 
-    public boolean delete(int noPolisi) {
-        return this.fdao.executeDML("DELETE FROM kendaraan WHERE no_polisi=" + noPolisi+"'");
+    public boolean delete(String noPolisi) {
+        return this.fdao.executeDML("DELETE FROM kendaraan WHERE no_polisi='" + noPolisi+"'");
     }
 
     public List<Object[]> getAll() {
@@ -44,10 +44,10 @@ public class KendaraanDAO {
     }
 
     public List<Object[]> search(String category, String data) {
-        return this.fdao.getDatas("SELECT k.no_polisi, k.warna, j.nama_jenis FROM kendaraan k join jenis j on k.jenis_id=j.jenis_id WHERE " + category + " LIKE '%" + data + "%'");
+        return this.fdao.getDatas("SELECT k.no_polisi, k.warna, j.nama_jenis FROM kendaraan k join jenis j on k.jenis_id=j.jenis_id WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
     }
     
-    public Object getById(String noPolisi){
+    public Object[] getById(String noPolisi){
         return this.fdao.getDataBy("SELECT k.no_polisi, k.warna, j.nama_jenis FROM kendaraan k join jenis j on k.jenis_id=j.jenis_id WHERE no_polisi='"+noPolisi+"'");
     }
     

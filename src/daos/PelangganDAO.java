@@ -34,8 +34,8 @@ public class PelangganDAO {
                 +"',no_polisi='"+pelanggan.getNoPolisi().getNoPolisi()+"' WHERE pelanggan_id'"+ pelanggan.getPelangganId()+"'");
     }
 
-    public boolean delete(int pelangganId) {
-        return this.fdao.executeDML("DELETE FROM Pelanggan WHERE pelanggan_id=" + pelangganId+"'");
+    public boolean delete(String pelangganId) {
+        return this.fdao.executeDML("DELETE FROM Pelanggan WHERE pelanggan_id='" + pelangganId+"'");
     }
 
     public List<Object[]> getAll() {
@@ -47,11 +47,11 @@ public class PelangganDAO {
     }
 
     public List<Object[]> search(String category, String data) {
-        return this.fdao.getDatas("SELECT pelanggan_id, nama_pelanggan, alamat, no_tlp, keluhan, no_polisi from pelanggan WHERE " + category + " LIKE '%" + data + "%'");
+        return this.fdao.getDatas("SELECT pelanggan_id, nama_pelanggan, alamat, no_tlp, keluhan, no_polisi from pelanggan WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
     }
     
-    public Object getById(int barangId){
-        return this.fdao.getDataBy("SELECT pelanggan_id, nama_pelanggan, alamat, no_tlp, keluhan, no_polisi from pelanggan WHERE barang_id="+barangId+"'");
+    public Object[] getById(String barangId){
+        return this.fdao.getDataBy("SELECT pelanggan_id, nama_pelanggan, alamat, no_tlp, keluhan, no_polisi from pelanggan WHERE barang_id='"+barangId+"'");
     }
     
 //    public String getAutoID(){

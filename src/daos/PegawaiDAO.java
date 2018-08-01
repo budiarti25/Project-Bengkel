@@ -23,36 +23,36 @@ public class PegawaiDAO {
     public boolean insert(Pegawai pegawai) {
         return this.fdao.executeDML("INSERT INTO Pegawai VALUES('"
                 + pegawai.getPegawaiId()+ "','" +pegawai.getPegawaiName()+"','"+pegawai.getPegawaiAlamat()
-                +"','"+pegawai.getPegawaiJenisKelamin()+"','"+pegawai.getPeranId().getPeranId()+"')");
+                +"','"+pegawai.getPegawaiJenisKelamin()+"')");
     }
 
     public boolean update(Pegawai pegawai) {
         return this.fdao.executeDML("UPDATE pegawai SET nama_pegawai='"
                 +pegawai.getPegawaiName()+"', alamat='"+pegawai.getPegawaiAlamat()
-                +"', jenis_kelamin='"+pegawai.getPegawaiJenisKelamin()+"', peran_id='"+pegawai.getPeranId().getPeranId()+"'WHERE pegawai_id='"+pegawai.getPegawaiId()+ "'");
+                +"', jenis_kelamin='"+pegawai.getPegawaiJenisKelamin()+"' WHERE pegawai_id='"+pegawai.getPegawaiId()+ "'");
     }
 
-    public boolean delete(int pegawaiId) {
-        return this.fdao.executeDML("DELETE FROM pegawai WHERE pegawai_id=" + pegawaiId+"'");
+    public boolean delete(String pegawaiId) {
+        return this.fdao.executeDML("DELETE FROM pegawai WHERE pegawai_id='"+ pegawaiId+"'");
     }
 
     public List<Object[]> getAll() {
-        return this.fdao.getDatas("SELECT * FROM barang");
+        return this.fdao.getDatas("SELECT * FROM pegawai");
     }
 
     public List<Object[]> getAllSort(String category, String sort) {
-        return this.fdao.getDatas("SELECT * FROM barang ORDER BY " + category + " " + sort);
+        return this.fdao.getDatas("SELECT * FROM pegawai ORDER BY " + category + " " + sort);
     }
 
     public List<Object[]> search(String category, String data) {
-        return this.fdao.getDatas("SELECT * FROM barang WHERE " + category + " LIKE '%" + data + "%'");
+        return this.fdao.getDatas("SELECT SELECT * FROM pegawai WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
     }
     
-    public Object getById(int pegawaiId){
-        return this.fdao.getDataBy("SELECT * FROM pegawai WHERE pegawai_id="+pegawaiId+"'");
+    public Object[] getById(String pegawaiId){
+        return this.fdao.getDataBy("SELECT SELECT * FROM pegawai WHERE pegawai_id='"+pegawaiId+"'");
     }
     
 //    public String getAutoID(){
-//        return this.fdao.getAutoId("SELECT MAX(jenis_id)+1 AS MAXID FROM Jenis");
+//        return this.fdao.getAutoId("SELECT MAX(pegawai_id)+1 AS MAXID FROM Pegawai");
 //    }
 }

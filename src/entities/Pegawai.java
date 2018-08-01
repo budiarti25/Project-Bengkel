@@ -15,17 +15,15 @@ public class Pegawai {
     private String pegawaiName;
     private String pegawaiAlamat;
     private String pegawaiJenisKelamin;
-    private Peran peranId;
 
     public Pegawai() {
     }
 
-    public Pegawai(String pegawaiId, String pegawaiName, String pegawaiAlamat, String pegawaiJenisKelamin, Peran peranId) {
+    public Pegawai(String pegawaiId, String pegawaiName, String pegawaiAlamat, String pegawaiJenisKelamin) {
         this.pegawaiId = pegawaiId;
         this.pegawaiName = pegawaiName;
         this.pegawaiAlamat = pegawaiAlamat;
         this.pegawaiJenisKelamin = pegawaiJenisKelamin;
-        this.peranId = peranId;
     }
 
     /**
@@ -84,19 +82,4 @@ public class Pegawai {
         this.pegawaiJenisKelamin = pegawaiJenisKelamin;
     }
 
-    /**
-     * @return the peranId
-     */
-    public Peran getPeranId() {
-        return peranId;
-    }
-
-    /**
-     * @param peranId the peranId to set
-     */
-    public void setPeranId(Peran peranId) {
-        this.peranId = peranId;
-    }
-    
-    
 }

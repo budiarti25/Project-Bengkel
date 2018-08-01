@@ -320,22 +320,15 @@ public class BarangView extends javax.swing.JInternalFrame {
         this.reset();
     }
 
-    /**
-     * fungsi save/update berdasarkan parameter tertentu
-     *
-     * @param countryId
-     * @param countryName
-     * @param region
-     * @param isSave
-     */
+    
     public void saveOrEdit(String barangId, String barangNama, int stok, int harga, int pemasok, boolean isSave) {
         boolean flag = true;
         if (isSave) {
-            flag = this.barangController.save(idtxtfieldBarang.getText(), nametxtfieldBarang.getText(), 
-                    stoktxtfieldBarang.getText(), hargatxtfieldBarang.getName(), this.getPemasokId());
+            flag = this.barangController.save(barangId, barangNama, 
+                    Integer.toString(stok), Integer.toString(harga), this.getPemasokId());
         } else {
-            flag = this.barangController.edit(idtxtfieldBarang.getText(), nametxtfieldBarang.getText(), 
-                    stoktxtfieldBarang.getText(), hargatxtfieldBarang.getName(), this.getPemasokId());
+            flag = this.barangController.edit(barangId, barangNama, 
+                    Integer.toString(stok), Integer.toString(harga), this.getPemasokId());
         }
         this.viewProccess.saveData(this, flag, isSave);
         this.reset();
@@ -361,9 +354,12 @@ public class BarangView extends javax.swing.JInternalFrame {
      */
     public void reset() {
         idtxtfieldBarang.setEnabled(true);
+        idtxtfieldBarang.setText("");
         nametxtfieldBarang.setText("");
         idcomboPemasok.setSelectedItem("");
         findtxtfieldBarang.setText("");
+        stoktxtfieldBarang.setText("");
+        hargatxtfieldBarang.setText("");
         this.bindingTable();
         dropbtnBarang.setEnabled(false);
     }

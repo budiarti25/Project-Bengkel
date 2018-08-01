@@ -9,29 +9,45 @@ package entities;
  *
  * @author budiarti
  */
-public class TransaksiDetailBarang {
-    private String serviceId;
+public class DetailTransaksiService {
+    private String detailServiceId;
+    private Service serviceId;
     private Transaksi transaksiId;
 
-    public TransaksiDetailBarang() {
+    public DetailTransaksiService() {
     }
 
-    public TransaksiDetailBarang(String serviceId, Transaksi transaksiId) {
+    public DetailTransaksiService(String detailServiceId, Service serviceId, Transaksi transaksiId) {
+        this.detailServiceId = detailServiceId;
         this.serviceId = serviceId;
         this.transaksiId = transaksiId;
     }
 
     /**
+     * @return the detailServiceId
+     */
+    public String getDetailServiceId() {
+        return detailServiceId;
+    }
+
+    /**
+     * @param detailServiceId the detailServiceId to set
+     */
+    public void setDetailServiceId(String detailServiceId) {
+        this.detailServiceId = detailServiceId;
+    }
+
+    /**
      * @return the serviceId
      */
-    public String getServiceId() {
+    public Service getServiceId() {
         return serviceId;
     }
 
     /**
      * @param serviceId the serviceId to set
      */
-    public void setServiceId(String serviceId) {
+    public void setServiceId(Service serviceId) {
         this.serviceId = serviceId;
     }
 

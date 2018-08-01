@@ -29,7 +29,7 @@ public class BarangController {
     public boolean save(String barangId, String barangName, String barangStok, String barangHarga, String pemasokId) {
         Object[] object = (Object[])this.pdao.getById(Integer.parseInt(pemasokId));
         Pemasok pemasok = new Pemasok(Integer.parseInt(object[0].toString()), (String)object[1]);
-        return this.barangDAO.insert(new Barang(barangId, barangName, Integer.parseInt(barangStok), Integer.parseInt(barangHarga), pemasok));
+          return this.barangDAO.insert(new Barang(barangId, barangName, Integer.parseInt(barangStok), Integer.parseInt(barangHarga), pemasok));
 //        Pemasok pemasok = (Pemasok) this.pdao.getById(Integer.parseInt(pemasokId));
 //        return this.barangDAO.insert((new Barang(barangId, barangName, Integer.parseInt(barangStok), Integer.parseInt(barangHarga), pemasok)));
     }
@@ -41,7 +41,7 @@ public class BarangController {
     }
 
     public boolean drop(String barangId) {
-        return this.barangDAO.delete(Integer.parseInt(barangId));
+        return this.barangDAO.delete(barangId);
     }
 
     public List<Object[]> binding() {
@@ -57,6 +57,6 @@ public class BarangController {
     }
 
     public Object findById(String barangId) {
-        return this.barangDAO.getById(Integer.parseInt(barangId));
+        return this.barangDAO.getById(barangId);
     }
 }

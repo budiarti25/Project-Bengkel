@@ -32,23 +32,23 @@ public class PemasokDAO {
     }
 
     public boolean delete(int pemasokId) {
-        return this.fdao.executeDML("DELETE FROM Pemasok WHERE jenis_id=" + pemasokId);
+        return this.fdao.executeDML("DELETE FROM Pemasok WHERE pemasok_id=" + pemasokId);
     }
 
     public List<Object[]> getAll() {
-        return this.fdao.getDatas("SELECT * FROM Pemasok");
+        return this.fdao.getDatas("SELECT * FROM PEMASOK");
     }
 
     public List<Object[]> getAllSort(String category, String sort) {
-        return this.fdao.getDatas("SELECT * FROM Pemasok ORDER BY " + category + " " + sort);
+        return this.fdao.getDatas("SELECT * FROM PEMASOK ORDER BY " + category + " " + sort);
     }
 
     public List<Object[]> search(String category, String data) {
-        return this.fdao.getDatas("SELECT * FROM Pemasok WHERE " + category + " LIKE '%" + data + "%'");
+        return this.fdao.getDatas("SELECT * FROM PEMASOK WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
     }
     
-    public Object getById(int pemasokId){
-        return this.fdao.getDataBy("SELECT * FROM Pemasok WHERE jenis_id="+pemasokId);
+    public Object[] getById(int pemasokId){
+        return this.fdao.getDataBy("SELECT * FROM PEMASOK WHERE pemasok_id="+pemasokId);
     }
     
     public String getAutoID(){

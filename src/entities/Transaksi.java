@@ -16,17 +16,15 @@ public class Transaksi {
     private Date tanggal;
     private Pegawai pegawaiId;
     private Pelanggan pelangganId;
-    private Barang barangId;
 
     public Transaksi() {
     }
 
-    public Transaksi(String transaksiId, Date tanggal, Pegawai pegawaiId, Pelanggan pelangganId, Barang barangId) {
+    public Transaksi(String transaksiId, Date tanggal, Pegawai pegawaiId, Pelanggan pelangganId) {
         this.transaksiId = transaksiId;
         this.tanggal = tanggal;
         this.pegawaiId = pegawaiId;
         this.pelangganId = pelangganId;
-        this.barangId = barangId;
     }
 
     /**
@@ -84,20 +82,4 @@ public class Transaksi {
     public void setPelangganId(Pelanggan pelangganId) {
         this.pelangganId = pelangganId;
     }
-
-    /**
-     * @return the barangId
-     */
-    public Barang getBarangId() {
-        return barangId;
-    }
-
-    /**
-     * @param barangId the barangId to set
-     */
-    public void setBarangId(Barang barangId) {
-        this.barangId = barangId;
-    }
-    
-    
 }

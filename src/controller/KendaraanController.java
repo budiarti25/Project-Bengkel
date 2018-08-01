@@ -27,18 +27,20 @@ public class KendaraanController {
     }
 
     public boolean save(String noPolisi, String warnaKendaraan, String jenisId) {
-        Jenis jenis = (Jenis) this.jdao.getById(Integer.parseInt(jenisId));
+        Object[] object = (Object[])this.jdao.getById(jenisId);
+        Jenis jenis =new Jenis((String)object[0], (String)object[1]);
         return this.kdao.insert((new Kendaraan(noPolisi, warnaKendaraan, jenis)));
     }
 
     public boolean edit(String noPolisi, String warnaKendaraan, String jenisId) {
-        Jenis jenis = (Jenis) this.jdao.getById(Integer.parseInt(jenisId));
+        Object[] object = (Object[])this.jdao.getById(jenisId);
+        Jenis jenis =new Jenis((String)object[0], (String)object[1]);
         return this.kdao.update((new Kendaraan(noPolisi, warnaKendaraan, jenis)));
 
     }
 
     public boolean drop(String noPolisi) {
-        return this.kdao.delete(Integer.parseInt(noPolisi));
+        return this.kdao.delete(noPolisi);
     }
 
     public List<Object[]> binding() {

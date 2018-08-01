@@ -22,11 +22,10 @@ public class MyConnection {
         ods.setServerName("localhost");
         ods.setPortNumber(1521);
         ods.setServiceName("XE");
-        ods.setDatabaseName("Bengkel");
         ods.setUser("system");
         ods.setPassword("budiarti");
         connection = ods.getConnection();
-        connection.createStatement().execute("alter session set "+"current schema_bengkel");
+        connection.createStatement().execute("alter session set "+"current_schema=bengkel");
     }
     catch(SQLException e){
         e.fillInStackTrace();

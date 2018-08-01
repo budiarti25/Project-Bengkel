@@ -58,17 +58,16 @@ public class FunctionDAO implements InterfaceDAO{
     }
 
     @Override
-    public Object getDataBy(String query) {
-        Object data = new Object();
+    public Object[] getDataBy(String query) {
+        Object[] data = null;
         try {
             PreparedStatement preparedStatement=this.connection.prepareStatement(query);
             ResultSet rs=preparedStatement.executeQuery();
             
-            int column = rs.getMetaData().getColumnCount();
+            int column = rs.getMetaData().getColumnCount(); data= new Object[column];
             while(rs.next()){
-                Object[] item = new Object[column];
                 for (int i = 0; i < column; i++) {
-                    item[i] = rs.getObject(i+1);
+                    data[i] = rs.getObject(i+1);
                 }
             }
         } catch (SQLException ex) {

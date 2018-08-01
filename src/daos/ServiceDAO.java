@@ -31,8 +31,8 @@ public class ServiceDAO {
                 + service.getBiayaService() + " WHERE service_id='" +service.getServiceId()+"'");
     }
 
-    public boolean delete(int serviceId) {
-        return this.fdao.executeDML("DELETE FROM service WHERE service_id=" + serviceId+"'");
+    public boolean delete(String serviceId) {
+        return this.fdao.executeDML("DELETE FROM service WHERE service_id='" + serviceId+"'");
     }
 
     public List<Object[]> getAll() {
@@ -44,14 +44,14 @@ public class ServiceDAO {
     }
 
     public List<Object[]> search(String category, String data) {
-        return this.fdao.getDatas("SELECT * FROM service WHERE " + category + " LIKE '%" + data + "%'");
+        return this.fdao.getDatas("SELECT * FROM service WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
     }
     
-    public Object getById(int jenisId){
-        return this.fdao.getDataBy("SELECT * FROM service WHERE jenis_id="+jenisId+"'");
+    public Object[] getById(String serviceId){
+        return this.fdao.getDataBy("SELECT * FROM service WHERE service_id='"+serviceId+"'");
     }
     
 //    public String getAutoID(){
-//        return this.fdao.getAutoId("SELECT MAX(jenis_id)+1 AS MAXID FROM Jenis");
+//        return this.fdao.getAutoId("SELECT MAX(service_id)+1 AS MAXID FROM service");
 //    }
 }

@@ -31,7 +31,7 @@ public class ServiceController {
     }
 
     public boolean drop(String serviceId) {
-        return this.sdao.delete(Integer.parseInt(serviceId));
+        return this.sdao.delete(serviceId);
     }
 
     public List<Object[]> binding() {
@@ -47,6 +47,6 @@ public class ServiceController {
     }
 
     public Object findById(String serviceId) {
-        return this.sdao.getById(Integer.parseInt(serviceId));
+        return this.sdao.getById(serviceId);
     }
 }

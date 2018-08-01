@@ -31,7 +31,7 @@ public class PeranDAO {
                 + peran.getPeranName() + "' WHERE peran_id='" +peran.getPeranId()+"'");
     }
 
-    public boolean delete(int peranId) {
+    public boolean delete(String peranId) {
         return this.fdao.executeDML("DELETE FROM Peran WHERE peran_id= '" + peranId+"'");
     }
 
@@ -44,14 +44,14 @@ public class PeranDAO {
     }
 
     public List<Object[]> search(String category, String data) {
-        return this.fdao.getDatas("SELECT * FROM Peran WHERE " + category + " LIKE '%" + data + "%'");
+        return this.fdao.getDatas("SELECT * FROM Peran WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
     }
     
-    public Object getById(int jenisId){
-        return this.fdao.getDataBy("SELECT * FROM jenis WHERE jenis_id="+jenisId+"'");
+    public Object[] getById(String peranId){
+        return this.fdao.getDataBy("SELECT * FROM Peran WHERE peran_id="+peranId+"'");
     }
     
 //    public String getAutoID(){
-//        return this.fdao.getAutoId("SELECT MAX(jenis_id)+1 AS MAXID FROM Jenis");
+//        return this.fdao.getAutoId("SELECT MAX(peran_id)+1 AS MAXID FROM Peran");
 //    }
 }

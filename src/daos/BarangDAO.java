@@ -33,27 +33,26 @@ public class BarangDAO {
                 +" WHERE barang_id='" +barang.getBarangId()+"'");
     }
 
-    public boolean delete(int barangId) {
-        return this.fdao.executeDML("DELETE FROM barang WHERE service_id=" + barangId+"'");
+    public boolean delete(String barangId) {
+        return this.fdao.executeDML("DELETE FROM barang WHERE barang_id='" + barangId+"'");
     }
 
     public List<Object[]> getAll() {
-        return this.fdao.getDatas("SELECT b.barang_id, b.nama_barang, b.stok_barang,b.harga_barang, p.nama_pemasok"
+        return this.fdao.getDatas("SELECT b.barang_id, b.nama_barang, b.stok_barang,b.harga_barang, p.nama_pemasok "
                 + "FROM barang b join pemasok p on b.pemasok_id=p.pemasok_id");
     }
 
     public List<Object[]> getAllSort(String category, String sort) {
-        return this.fdao.getDatas("SELECT b.barang_id, b.nama_barang, b.stok_barang,b.harga_barang, p.nama_pemasok "
-                + "FROM barang b join pemasok p on b.pemasok_id=p.pemasok_id  ORDER BY " + category + " " + sort);
+        return this.fdao.getDatas("SELECT b.barang_id, b.nama_barang, b.stok_barang,b.harga_barang, p.nama_pemasok FROM barang b join pemasok p on b.pemasok_id=p.pemasok_id ORDER BY " + category + " " + sort);
     }
 
     public List<Object[]> search(String category, String data) {
         return this.fdao.getDatas("SELECT b.barang_id, b.nama_barang, b.stok_barang,b.harga_barang, p.nama_pemasok "
-                + "FROM barang b join pemasok p on b.pemasok_id=p.pemasok_id   WHERE " + category + " LIKE '%" + data + "%'");
+                + "FROM barang b join pemasok p on b.pemasok_id=p.pemasok_id WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
     }
     
-    public Object getById(int barangId){
-        return this.fdao.getDataBy("SELECT SELECT b.barang_id, b.nama_barang, b.stok_barang,b.harga_barang, p.nama_pemasok "
+    public Object[] getById(String barangId){
+        return this.fdao.getDataBy("SELECT b.barang_id, b.nama_barang, b.stok_barang,b.harga_barang, p.nama_pemasok "
                 + "FROM barang b join pemasok p on b.pemasok_id=p.pemasok_id WHERE barang_id="+barangId+"'");
     }
     

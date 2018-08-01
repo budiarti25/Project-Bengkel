@@ -44,7 +44,6 @@ public class MainView extends javax.swing.JFrame {
         mnPegawai = new javax.swing.JMenuItem();
         mnPelanggan = new javax.swing.JMenuItem();
         mnPemasok = new javax.swing.JMenuItem();
-        mnPeran = new javax.swing.JMenuItem();
         mnService = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
@@ -111,14 +110,6 @@ public class MainView extends javax.swing.JFrame {
         });
         jMenu1.add(mnPemasok);
 
-        mnPeran.setText("Peran");
-        mnPeran.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnPeranActionPerformed(evt);
-            }
-        });
-        jMenu1.add(mnPeran);
-
         mnService.setText("Service");
         mnService.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,31 +144,27 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_mnBarangActionPerformed
 
     private void mnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnJenisActionPerformed
-        this.viewProccess.callForm(dskbengkel, new BarangView(connection));
+        this.viewProccess.callForm(dskbengkel, new JenisView(connection));
     }//GEN-LAST:event_mnJenisActionPerformed
 
     private void mnKendaraanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnKendaraanActionPerformed
-        this.viewProccess.callForm(dskbengkel, new BarangView(connection));
+        this.viewProccess.callForm(dskbengkel, new KendaraanView(connection));
     }//GEN-LAST:event_mnKendaraanActionPerformed
 
     private void mnPegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnPegawaiActionPerformed
-        this.viewProccess.callForm(dskbengkel, new BarangView(connection));
+        this.viewProccess.callForm(dskbengkel, new PegawaiView(connection));
     }//GEN-LAST:event_mnPegawaiActionPerformed
 
     private void mnPelangganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnPelangganActionPerformed
-        this.viewProccess.callForm(dskbengkel, new BarangView(connection));
+        this.viewProccess.callForm(dskbengkel, new PelangganView(connection));
     }//GEN-LAST:event_mnPelangganActionPerformed
 
     private void mnPemasokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnPemasokActionPerformed
-        this.viewProccess.callForm(dskbengkel, new BarangView(connection));
+        this.viewProccess.callForm(dskbengkel, new PemasokView(connection));
     }//GEN-LAST:event_mnPemasokActionPerformed
 
-    private void mnPeranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnPeranActionPerformed
-        this.viewProccess.callForm(dskbengkel, new BarangView(connection));
-    }//GEN-LAST:event_mnPeranActionPerformed
-
     private void mnServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnServiceActionPerformed
-        this.viewProccess.callForm(dskbengkel, new BarangView(connection));
+        this.viewProccess.callForm(dskbengkel, new ServiceView(connection));
     }//GEN-LAST:event_mnServiceActionPerformed
 
     /**
@@ -226,7 +213,6 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnPegawai;
     private javax.swing.JMenuItem mnPelanggan;
     private javax.swing.JMenuItem mnPemasok;
-    private javax.swing.JMenuItem mnPeran;
     private javax.swing.JMenuItem mnService;
     // End of variables declaration//GEN-END:variables
 }

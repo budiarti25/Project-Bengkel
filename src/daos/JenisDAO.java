@@ -30,8 +30,8 @@ public class JenisDAO {
                 + jenis.getJenisName() + "' WHERE jenis_id='" +jenis.getJenisId()+"'");
     }
 
-    public boolean delete(int jenisId) {
-        return this.fdao.executeDML("DELETE FROM jenis WHERE jenis_id=" + jenisId+"'");
+    public boolean delete(String jenisId) {
+        return this.fdao.executeDML("DELETE FROM jenis WHERE jenis_id='" + jenisId+"'");
     }
 
     public List<Object[]> getAll() {
@@ -43,10 +43,10 @@ public class JenisDAO {
     }
 
     public List<Object[]> search(String category, String data) {
-        return this.fdao.getDatas("SELECT * FROM jenis WHERE " + category + " LIKE '%" + data + "%'");
+        return this.fdao.getDatas("SELECT * FROM jenis WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
     }
     
-    public Object getById(int jenisId){
+    public Object[] getById(String jenisId){
         return this.fdao.getDataBy("SELECT * FROM jenis WHERE jenis_id= '"+jenisId+"'");
     }
     
