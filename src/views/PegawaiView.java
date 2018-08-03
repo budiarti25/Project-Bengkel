@@ -18,8 +18,8 @@ public class PegawaiView extends javax.swing.JInternalFrame {
     
     private final ViewProccess viewProccess;
     private final PegawaiController pegawaiController;
-    private final String[] header = {"Pegawai Id", "Nama Pegawai","Alamat", "Jenis Kelamin", "Peran"};
-    private final String[] category = {"pegawai_id", "nama_pegawai", "alamat", "jenis_barang", "nama_peran"};
+    private final String[] header = {"Pegawai Id", "Nama Pegawai","Alamat", "Jenis Kelamin"};
+    private final String[] category = {"pegawai_id", "nama_pegawai", "alamat", "jenis_kelamin"};
     private final Connection connection;
 
     /**
@@ -329,9 +329,9 @@ public class PegawaiView extends javax.swing.JInternalFrame {
     private String getJenisKelamin(){
         String jk="";
         if(jkLaki.isSelected()){
-            jk="Laki-laki";
+            jk="L";
         }else{
-            jk="Perempuan";
+            jk="P";
         }
         return jk;
     }

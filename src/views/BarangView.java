@@ -15,7 +15,7 @@ import java.util.List;
  * @author budiarti
  */
 public class BarangView extends javax.swing.JInternalFrame {
-    
+
     private final ViewProccess viewProccess;
     private final BarangController barangController;
     private final String[] header = {"Barang Id", "Nama Barang", "Stok Barang", "Harga Barang", "Nama Pemasok"};
@@ -27,7 +27,7 @@ public class BarangView extends javax.swing.JInternalFrame {
      * Creates new form Master
      */
     public BarangView(Connection connection) {
-        this.connection=connection;
+        this.connection = connection;
         initComponents();
         this.viewProccess = new ViewProccess();
         this.barangController = new BarangController(connection);
@@ -37,7 +37,6 @@ public class BarangView extends javax.swing.JInternalFrame {
         this.reset();
         this.bindingTable();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -241,8 +240,9 @@ public class BarangView extends javax.swing.JInternalFrame {
     private void findtxtfieldBarangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findtxtfieldBarangKeyPressed
         if (this.viewProccess.keyPressed(evt)) {
             this.search(this.viewProccess.getCategory(this.category, findcomboBarang), findtxtfieldBarang.getText());
+        }
     }//GEN-LAST:event_findtxtfieldBarangKeyPressed
-    }
+
     private void savebtnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnBarangActionPerformed
         this.saveOrEdit(idtxtfieldBarang.getText(), nametxtfieldBarang.getText(),
                 Integer.parseInt(stoktxtfieldBarang.getText()), Integer.parseInt(hargatxtfieldBarang.getText()),
@@ -287,7 +287,6 @@ public class BarangView extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblBarang;
     // End of variables declaration//GEN-END:variables
 
-
     private void bindingTable() {
         this.viewProccess.viewTable(tblBarang, header,
                 this.barangController.bindingSort(category[0], "asc"));
@@ -296,7 +295,7 @@ public class BarangView extends javax.swing.JInternalFrame {
     public void search(String category, String data) {
         this.viewProccess.viewTable(tblBarang, header, this.barangController.find(category, data));
     }
-    
+
     private void loadSearchComboBox() {
         this.viewProccess.loadSearchComboBox(findcomboBarang, header);
     }
@@ -308,33 +307,31 @@ public class BarangView extends javax.swing.JInternalFrame {
     private void loadPemasok() {
         this.viewProccess.loadDetails(idcomboPemasok, this.getDataPemasok(), 1);
     }
-    
-    private String getPemasokId(){
+
+    private String getPemasokId() {
         return this.viewProccess.getIdfromComboBox(this.PemasokTemp, idcomboPemasok.getSelectedIndex());
     }
-    
-     public void drop(String barangId) {
+
+    public void drop(String barangId) {
         if (this.viewProccess.dropConfirm(this)) {
             this.viewProccess.dropData(this, this.barangController.drop(barangId));
         }
         this.reset();
     }
 
-    
     public void saveOrEdit(String barangId, String barangNama, int stok, int harga, int pemasok, boolean isSave) {
         boolean flag = true;
         if (isSave) {
-            flag = this.barangController.save(barangId, barangNama, 
+            flag = this.barangController.save(barangId, barangNama,
                     Integer.toString(stok), Integer.toString(harga), this.getPemasokId());
         } else {
-            flag = this.barangController.edit(barangId, barangNama, 
+            flag = this.barangController.edit(barangId, barangNama,
                     Integer.toString(stok), Integer.toString(harga), this.getPemasokId());
         }
         this.viewProccess.saveData(this, flag, isSave);
         this.reset();
     }
 
-    
     public void mouseClick(int row) {
         idtxtfieldBarang.setEnabled(false);
         dropbtnBarang.setEnabled(true);

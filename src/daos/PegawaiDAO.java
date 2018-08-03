@@ -45,11 +45,11 @@ public class PegawaiDAO {
     }
 
     public List<Object[]> search(String category, String data) {
-        return this.fdao.getDatas("SELECT SELECT * FROM pegawai WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
+        return this.fdao.getDatas("SELECT * FROM pegawai WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
     }
     
     public Object[] getById(String pegawaiId){
-        return this.fdao.getDataBy("SELECT SELECT * FROM pegawai WHERE pegawai_id='"+pegawaiId+"'");
+        return this.fdao.getDataBy("SELECT * FROM pegawai WHERE pegawai_id='"+pegawaiId+"'");
     }
     
 //    public String getAutoID(){

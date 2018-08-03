@@ -37,7 +37,7 @@ public class ManualTester {
        // BarangController barangController=new BarangController(connection);
         PelangganController pelangganController=new PelangganController(connection);
         //System.out.println(barangController.save(barangId, barangName, Integer.toString(Stok), Integer.toString(Harga),  Integer.toString(pemasok)));
-        System.out.println(pelangganController.save(id, nama, alamat,tlp, keluhan, no_pol, jenis));
+       // System.out.println(pelangganController.save(id, nama, alamat,tlp, keluhan, no_pol, jenis));
         
     }
 }

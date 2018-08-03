@@ -50,8 +50,8 @@ public class PelangganDAO {
         return this.fdao.getDatas("SELECT pelanggan_id, nama_pelanggan, alamat, no_telp, keluhan, no_polisi from pelanggan WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
     }
     
-    public Object[] getById(String barangId){
-        return this.fdao.getDataBy("SELECT pelanggan_id, nama_pelanggan, alamat, no_telp, keluhan, no_polisi from pelanggan WHERE barang_id='"+barangId+"'");
+    public Object[] getById(String pelangganId){
+        return this.fdao.getDataBy("SELECT pelanggan_id, nama_pelanggan, alamat, no_telp, keluhan, no_polisi from pelanggan WHERE pelanggan_id='"+pelangganId+"'");
     }
     
 //    public String getAutoID(){

@@ -9,6 +9,8 @@ import controller.PegawaiController;
 import controller.PelangganController;
 import controller.TransaksiController;
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,8 +21,8 @@ public class TransaksiView extends javax.swing.JInternalFrame {
     
     private final ViewProccess viewProccess;
     private final TransaksiController transaksiController;
-    private final String[] header = {""};
-    private final String[] category = {""};
+    private final String[] header = {"Transaksi Id","Tanggal","Nama Pegawai", "Nama Pelaggan", "No Telepon", "Keluhan", "No Polisi", "Jenis Kendaraan"};
+    private final String[] category = {"transaksi_id", "tanggal", "nama_pegawai", "nama_pelanggan", "no_telp","keluhan","no_polisi", "nama_jenis"};
     private final Connection connection;
     private final List<Object[]> PgwTemp;
     private final List<Object[]> PlgTemp;
@@ -39,6 +41,8 @@ public class TransaksiView extends javax.swing.JInternalFrame {
         this.loadPgw();
         this.loadPlg();
         this.reset();
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        jLabel6.setText(format.format(new Date()));
         this.bindingTable();
     }
 
@@ -83,8 +87,18 @@ public class TransaksiView extends javax.swing.JInternalFrame {
         jLabel4.setText("Nama Pelanggan");
 
         dropbtnTransaksi.setText("Drop");
+        dropbtnTransaksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dropbtnTransaksiActionPerformed(evt);
+            }
+        });
 
         savebtnTransaksi.setText("Save");
+        savebtnTransaksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savebtnTransaksiActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("-");
 
@@ -99,19 +113,16 @@ public class TransaksiView extends javax.swing.JInternalFrame {
                 .addComponent(savebtnTransaksi)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(idtxtfieldTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(jLabel2)
+                        .addGap(76, 76, 76)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(idtxtfieldTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -148,7 +159,24 @@ public class TransaksiView extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        findcomboTransaksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findcomboTransaksiActionPerformed(evt);
+            }
+        });
+
+        findtxtfieldTransaksi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                findtxtfieldTransaksiKeyPressed(evt);
+            }
+        });
+
         Find.setText("Find");
+        Find.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FindActionPerformed(evt);
+            }
+        });
 
         tblTrans.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -158,6 +186,11 @@ public class TransaksiView extends javax.swing.JInternalFrame {
 
             }
         ));
+        tblTrans.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblTransMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblTrans);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -175,8 +208,8 @@ public class TransaksiView extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -195,6 +228,33 @@ public class TransaksiView extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void FindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FindActionPerformed
+        this.search(this.viewProccess.getCategory(this.category, findcomboTransaksi), findtxtfieldTransaksi.getText());
+    }//GEN-LAST:event_FindActionPerformed
+
+    private void dropbtnTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropbtnTransaksiActionPerformed
+        this.drop(idtxtfieldTransaksi.getText());
+    }//GEN-LAST:event_dropbtnTransaksiActionPerformed
+
+    private void savebtnTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnTransaksiActionPerformed
+        this.saveOrEdit(idtxtfieldTransaksi.getText(), jLabel6.getText(),
+                Integer.toString(idcomboPegawai.getSelectedIndex()), Integer.toString(idcomboPelanggan.getSelectedIndex()), idtxtfieldTransaksi.isEnabled());
+    }//GEN-LAST:event_savebtnTransaksiActionPerformed
+
+    private void findcomboTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findcomboTransaksiActionPerformed
+        this.search(this.viewProccess.getCategory(this.category, findcomboTransaksi), findtxtfieldTransaksi.getText());
+    }//GEN-LAST:event_findcomboTransaksiActionPerformed
+
+    private void findtxtfieldTransaksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_findtxtfieldTransaksiKeyPressed
+        if (this.viewProccess.keyPressed(evt)) {
+            this.search(this.viewProccess.getCategory(this.category, findcomboTransaksi), findtxtfieldTransaksi.getText());
+        }
+    }//GEN-LAST:event_findtxtfieldTransaksiKeyPressed
+
+    private void tblTransMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTransMouseClicked
+        this.mouseClick(tblTrans.getSelectedRow());
+    }//GEN-LAST:event_tblTransMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
