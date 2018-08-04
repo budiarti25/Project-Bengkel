@@ -22,13 +22,13 @@ public class ServiceDAO {
 
     public boolean insert(Service service) {
         return this.fdao.executeDML("INSERT INTO service VALUES('"
-                + service.getServiceId()+ "','" + service.getServiceJenis()+"',"+service.getBiayaService()+")");
+                + service.getServiceId()+ "',"+service.getBiayaService()+",'" + service.getKategoriId().getKategoriId()+"')");
     }
 
     public boolean update(Service service) {
-        return this.fdao.executeDML("UPDATE Service SET jenis_service='"
-                + service.getServiceJenis() + "',biaya_service="
-                + service.getBiayaService() + " WHERE service_id='" +service.getServiceId()+"'");
+        return this.fdao.executeDML("UPDATE Service SET biaya_service="
+                + service.getBiayaService() + ",kategori_id='"
+                + service.getKategoriId().getKategoriId() + "' WHERE service_id='" +service.getServiceId()+"'");
     }
 
     public boolean delete(String serviceId) {
@@ -36,19 +36,19 @@ public class ServiceDAO {
     }
 
     public List<Object[]> getAll() {
-        return this.fdao.getDatas("SELECT * FROM service");
+        return this.fdao.getDatas("select s.service_id, kt.nama_kategori, kt.keterangan, s.biaya_service from SERVICE s join KATEGORI kt on kt.KATEGORI_ID=s.KATEGORI_ID");
     }
 
     public List<Object[]> getAllSort(String category, String sort) {
-        return this.fdao.getDatas("SELECT * FROM service ORDER BY " + category + " " + sort);
+        return this.fdao.getDatas("select s.service_id, kt.nama_kategori, kt.keterangan, s.biaya_service from SERVICE s join KATEGORI kt on kt.KATEGORI_ID=s.KATEGORI_ID ORDER BY " + category + " " + sort);
     }
 
     public List<Object[]> search(String category, String data) {
-        return this.fdao.getDatas("SELECT * FROM service WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
+        return this.fdao.getDatas("select s.service_id, kt.nama_kategori, kt.keterangan, s.biaya_service from SERVICE s join KATEGORI kt on kt.KATEGORI_ID=s.KATEGORI_ID WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
     }
     
     public Object[] getById(String serviceId){
-        return this.fdao.getDataBy("SELECT * FROM service WHERE service_id='"+serviceId+"'");
+        return this.fdao.getDataBy("select s.service_id, kt.nama_kategori, kt.keterangan, s.biaya_service from SERVICE s join KATEGORI kt on kt.KATEGORI_ID=s.KATEGORI_ID WHERE service_id='"+serviceId+"'");
     }
     
 //    public String getAutoID(){

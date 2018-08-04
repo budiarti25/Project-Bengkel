@@ -5,8 +5,10 @@
  */
 package views;
 
+import controller.KategoriController;
 import controller.ServiceController;
 import java.sql.Connection;
+import java.util.List;
 
 /**
  *
@@ -16,8 +18,9 @@ public class ServiceView extends javax.swing.JInternalFrame {
     
     private final ViewProccess viewProccess;
     private final ServiceController serviceController;
-    private final String[] header = {"Service Id", "Jenis Service", "Biaya"};
-    private final String[] category = {"service_id", "jenis_service", "biaya"};
+    private final String[] header = {"Service Id", "Jenis Service", "Keterangan", "Biaya"};
+    private final String[] category = {"service_id", "jenis_service", "keterangan", "biaya"};
+    private final List<Object[]> JenisTemp;
     private final Connection connection;
 
     /**
@@ -28,7 +31,9 @@ public class ServiceView extends javax.swing.JInternalFrame {
         initComponents();
         this.viewProccess = new ViewProccess();
         this.serviceController= new ServiceController(connection);
+        this.JenisTemp = this.getDataJenis();
         this.loadSearchComboBox();
+        this.loadJenis();
         this.reset();
         this.bindingTable();
     }
@@ -53,10 +58,6 @@ public class ServiceView extends javax.swing.JInternalFrame {
         cmbjenis = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         cmbket = new javax.swing.JComboBox();
-        jLabel5 = new javax.swing.JLabel();
-        jml = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        cmbbarang = new javax.swing.JComboBox();
         findcomboService = new javax.swing.JComboBox<String>();
         findtxtfieldService = new javax.swing.JTextField();
         btnFind = new javax.swing.JButton();
@@ -99,50 +100,36 @@ public class ServiceView extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Keterangan");
 
-        jLabel5.setText("Nama Barang");
-
-        jLabel6.setText("Jumlah");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(dropbtnService)
-                        .addGap(18, 18, 18)
-                        .addComponent(savebtnService))
+                        .addComponent(jLabel1)
+                        .addGap(36, 36, 36)
+                        .addComponent(idtxtfieldService, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(36, 36, 36)
-                                .addComponent(idtxtfieldService, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(23, 23, 23))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmbjenis, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbket, 0, 130, Short.MAX_VALUE))))))
+                        .addComponent(jLabel2)
+                        .addGap(23, 23, 23)
+                        .addComponent(cmbjenis, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(54, 54, 54)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(biayatxtfieldService, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                    .addComponent(jml)
-                    .addComponent(cmbbarang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cmbket, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(biayatxtfieldService, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
                 .addGap(47, 47, 47))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(195, 195, 195)
+                .addComponent(dropbtnService)
+                .addGap(18, 18, 18)
+                .addComponent(savebtnService)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,25 +138,19 @@ public class ServiceView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(idtxtfieldService, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(cmbbarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4)
+                    .addComponent(cmbket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(cmbjenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jml, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(cmbket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(biayatxtfieldService, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dropbtnService)
                     .addComponent(savebtnService))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         findcomboService.addActionListener(new java.awt.event.ActionListener() {
@@ -249,8 +230,8 @@ public class ServiceView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_idtxtfieldServiceActionPerformed
 
     private void savebtnServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnServiceActionPerformed
-        this.saveOrEdit(idtxtfieldService.getText(), JenisService.getText(),
-                Integer.parseInt(biayatxtfieldService.getText()), idtxtfieldService.isEnabled());
+        this.saveOrEdit(idtxtfieldService.getText(), Integer.parseInt(biayatxtfieldService.getText()),
+                Integer.toString(cmbjenis.getSelectedIndex()), idtxtfieldService.isEnabled());
     }//GEN-LAST:event_savebtnServiceActionPerformed
 
     private void dropbtnServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropbtnServiceActionPerformed
@@ -279,7 +260,6 @@ public class ServiceView extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField biayatxtfieldService;
     private javax.swing.JButton btnFind;
-    private javax.swing.JComboBox cmbbarang;
     private javax.swing.JComboBox cmbjenis;
     private javax.swing.JComboBox cmbket;
     private javax.swing.JButton dropbtnService;
@@ -290,11 +270,8 @@ public class ServiceView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jml;
     private javax.swing.JButton savebtnService;
     private javax.swing.JTable tblService;
     // End of variables declaration//GEN-END:variables
@@ -313,6 +290,18 @@ public class ServiceView extends javax.swing.JInternalFrame {
         this.viewProccess.loadSearchComboBox(findcomboService, header);
     }
     
+    private List<Object[]> getDataJenis() {
+        return new KategoriController(connection).bindingSort("kategori_id", "asc");
+    }
+
+    private void loadJenis() {
+        this.viewProccess.loadDetails(cmbjenis, this.getDataJenis(), 1);
+    }
+
+    private String getJenisId() {
+        return this.viewProccess.getIdfromComboBox(this.JenisTemp, cmbjenis.getSelectedIndex());
+    }
+    
      public void drop(String barangId) {
         if (this.viewProccess.dropConfirm(this)) {
             this.viewProccess.dropData(this, this.serviceController.drop(barangId));
@@ -320,14 +309,12 @@ public class ServiceView extends javax.swing.JInternalFrame {
         this.reset();
     }
 
-    public void saveOrEdit(String serviceId, String serviceNama, int biaya, boolean isSave) {
+    public void saveOrEdit(String serviceId, int biaya, String serviceNama, boolean isSave) {
         boolean flag = true;
         if (isSave) {
-            flag = this.serviceController.save(idtxtfieldService.getText(), JenisService.getText(), 
-                    biayatxtfieldService.getText());
+            flag = this.serviceController.save(serviceId,Integer.toString(biaya), getJenisId());
         } else {
-            flag = this.serviceController.edit(idtxtfieldService.getText(), JenisService.getText(), 
-                    biayatxtfieldService.getText());
+            flag = this.serviceController.edit(serviceId, Integer.toString(biaya), getJenisId());
         }
         this.viewProccess.saveData(this, flag, isSave);
         this.reset();
@@ -337,8 +324,9 @@ public class ServiceView extends javax.swing.JInternalFrame {
         idtxtfieldService.setEnabled(false);
         dropbtnService.setEnabled(true);
         idtxtfieldService.setText(tblService.getValueAt(row, 0).toString());
-        JenisService.setText(tblService.getValueAt(row, 1).toString());
-        biayatxtfieldService.setText(tblService.getValueAt(row, 2).toString());
+        cmbjenis.setSelectedItem(tblService.getValueAt(row, 1).toString());
+        cmbket.setSelectedItem(tblService.getValueAt(row, 2).toString());
+        biayatxtfieldService.setText(tblService.getValueAt(row, 3).toString());
     }
 
     /**
@@ -346,7 +334,8 @@ public class ServiceView extends javax.swing.JInternalFrame {
      */
     public void reset() {
         idtxtfieldService.setEnabled(true);
-        JenisService.setText("");
+        cmbjenis.setSelectedItem("");
+        cmbket.setSelectedItem("");
         findtxtfieldService.setText("");
         this.bindingTable();
         dropbtnService.setEnabled(false);

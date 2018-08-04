@@ -11,16 +11,16 @@ package entities;
  */
 public class Service {
     private String serviceId;
-    private String serviceJenis;
     private int biayaService;
+    private Kategori kategoriId;
 
     public Service() {
     }
 
-    public Service(String serviceId, String serviceJenis, int biayaService) {
+    public Service(String serviceId, int biayaService, Kategori kategoriId) {
         this.serviceId = serviceId;
-        this.serviceJenis = serviceJenis;
         this.biayaService = biayaService;
+        this.kategoriId = kategoriId;
     }
 
     /**
@@ -38,20 +38,6 @@ public class Service {
     }
 
     /**
-     * @return the serviceJenis
-     */
-    public String getServiceJenis() {
-        return serviceJenis;
-    }
-
-    /**
-     * @param serviceJenis the serviceJenis to set
-     */
-    public void setServiceJenis(String serviceJenis) {
-        this.serviceJenis = serviceJenis;
-    }
-
-    /**
      * @return the biayaService
      */
     public int getBiayaService() {
@@ -64,6 +50,19 @@ public class Service {
     public void setBiayaService(int biayaService) {
         this.biayaService = biayaService;
     }
-    
-    
+
+    /**
+     * @return the kategoriId
+     */
+    public Kategori getKategoriId() {
+        return kategoriId;
+    }
+
+    /**
+     * @param kategoriId the kategoriId to set
+     */
+    public void setKategoriId(Kategori kategoriId) {
+        this.kategoriId = kategoriId;
+    }
+
 }

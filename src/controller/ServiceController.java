@@ -5,8 +5,10 @@
  */
 package controller;
 
+import daos.KategoriDAO;
 import daos.ServiceDAO;
 import entities.Service;
+import entities.Kategori;
 import java.sql.Connection;
 import java.util.List;
 
@@ -17,17 +19,23 @@ import java.util.List;
 public class ServiceController {
 
     private final ServiceDAO sdao;
+    private KategoriDAO kategoriDAO;
 
     public ServiceController(Connection connection) {
         this.sdao = new ServiceDAO(connection);
+        this.kategoriDAO=new KategoriDAO(connection);
     }
 
-    public boolean save(String serviceId, String serviceJenis, String biayaService) {
-        return this.sdao.insert(new Service(serviceId, serviceJenis, Integer.parseInt(biayaService)));
+    public boolean save(String serviceId, String biayaService, String kategoriId) {
+        Object[] object = (Object[])this.kategoriDAO.getById(kategoriId);
+        Kategori kategori= new Kategori((String)object[0],(String)object[1],(String)object[2]);
+        return this.sdao.insert(new Service(serviceId, Integer.parseInt(biayaService), kategori));
     }
 
-    public boolean edit(String serviceId, String serviceJenis, String biayaService) {
-        return this.sdao.update(new Service(serviceId, serviceJenis, Integer.parseInt(biayaService)));
+    public boolean edit(String serviceId, String biayaService, String kategoriId) {
+        Object[] object = (Object[])this.kategoriDAO.getById(kategoriId);
+        Kategori kategori= new Kategori((String)object[0],(String)object[1],(String)object[2]);
+        return this.sdao.update(new Service(serviceId, Integer.parseInt(biayaService), kategori));
     }
 
     public boolean drop(String serviceId) {
