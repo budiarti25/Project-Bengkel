@@ -33,11 +33,11 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtfieldJmlhBeli = new javax.swing.JTextField();
-        idcomboBarang = new javax.swing.JComboBox<String>();
-        idcomboTransaksi = new javax.swing.JComboBox<String>();
+        idcomboBarang = new javax.swing.JComboBox<>();
+        idcomboTransaksi = new javax.swing.JComboBox<>();
         dropbtn = new javax.swing.JButton();
         savebtn = new javax.swing.JButton();
-        findcomboTransaksibarang = new javax.swing.JComboBox<String>();
+        findcomboTransaksibarang = new javax.swing.JComboBox<>();
         txtfieldFind = new javax.swing.JTextField();
         btnFind = new javax.swing.JButton();
 
@@ -47,7 +47,7 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Detail Transaksi Barang");
 
-        jLabel1.setText("Jumlah Beli");
+        jLabel1.setText("Jumlah Jual");
 
         jLabel2.setText("Barang ID");
 
