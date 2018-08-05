@@ -147,11 +147,12 @@ public class TransaksiView extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1)
                         .addComponent(idtxtfieldTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel4)
-                    .addComponent(idcomboPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel4)
+                        .addComponent(idcomboPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dropbtnTransaksi)
@@ -306,11 +307,11 @@ public class TransaksiView extends javax.swing.JInternalFrame {
     }
 
     private void loadPlg() {
-        this.viewProccess.loadDetails(idcomboPegawai, this.getDataPgw(), 1);
+        this.viewProccess.loadDetails(idcomboPelanggan, this.getDataPlg(), 1);
     }
     
     private String getPlgId(){
-        return this.viewProccess.getIdfromComboBox(this.PgwTemp, idcomboPegawai.getSelectedIndex());
+        return this.viewProccess.getIdfromComboBox(this.PlgTemp, idcomboPegawai.getSelectedIndex());
     }
     
      public void drop(String barangId) {

@@ -21,6 +21,7 @@ public class ServiceView extends javax.swing.JInternalFrame {
     private final String[] header = {"Service Id", "Jenis Service", "Keterangan", "Biaya"};
     private final String[] category = {"service_id", "jenis_service", "keterangan", "biaya"};
     private final List<Object[]> JenisTemp;
+    private final List<Object[]> KetTemp;
     private final Connection connection;
 
     /**
@@ -32,8 +33,10 @@ public class ServiceView extends javax.swing.JInternalFrame {
         this.viewProccess = new ViewProccess();
         this.serviceController= new ServiceController(connection);
         this.JenisTemp = this.getDataJenis();
+        this.KetTemp=this.getDataJenis();
         this.loadSearchComboBox();
         this.loadJenis();
+        this.loadKet();
         this.reset();
         this.bindingTable();
     }
@@ -300,6 +303,14 @@ public class ServiceView extends javax.swing.JInternalFrame {
 
     private String getJenisId() {
         return this.viewProccess.getIdfromComboBox(this.JenisTemp, cmbjenis.getSelectedIndex());
+    }
+
+    private void loadKet() {
+        this.viewProccess.loadDetails(cmbket, this.getDataJenis(), 2);
+    }
+
+    private String getKet() {
+        return this.viewProccess.getIdfromComboBox(this.KetTemp, cmbket.getSelectedIndex());
     }
     
      public void drop(String barangId) {

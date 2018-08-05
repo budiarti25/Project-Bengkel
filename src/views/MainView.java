@@ -45,6 +45,7 @@ public class MainView extends javax.swing.JFrame {
         mnPelanggan = new javax.swing.JMenuItem();
         mnPemasok = new javax.swing.JMenuItem();
         mnService = new javax.swing.JMenuItem();
+        mnKategiri = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mnTransaksi = new javax.swing.JMenuItem();
         mnDTBarang = new javax.swing.JMenuItem();
@@ -120,6 +121,14 @@ public class MainView extends javax.swing.JFrame {
             }
         });
         jMenu1.add(mnService);
+
+        mnKategiri.setText("Kategori");
+        mnKategiri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnKategiriActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnKategiri);
 
         jMenuBar1.add(jMenu1);
 
@@ -203,12 +212,16 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_mnTransaksiActionPerformed
 
     private void mnDTBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnDTBarangActionPerformed
-        this.viewProccess.callForm(dskbengkel, new DetailTransaksiBarangView());
+        this.viewProccess.callForm(dskbengkel, new DetailTransaksiBarangView(connection));
     }//GEN-LAST:event_mnDTBarangActionPerformed
 
     private void mnDTSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnDTSActionPerformed
         this.viewProccess.callForm(dskbengkel, new DetailTransaksiServiceView());
     }//GEN-LAST:event_mnDTSActionPerformed
+
+    private void mnKategiriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnKategiriActionPerformed
+        this.viewProccess.callForm(dskbengkel, new KategoriView(connection));
+    }//GEN-LAST:event_mnKategiriActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,6 +267,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnDTBarang;
     private javax.swing.JMenuItem mnDTS;
     private javax.swing.JMenuItem mnJenis;
+    private javax.swing.JMenuItem mnKategiri;
     private javax.swing.JMenuItem mnKendaraan;
     private javax.swing.JMenuItem mnPegawai;
     private javax.swing.JMenuItem mnPelanggan;
