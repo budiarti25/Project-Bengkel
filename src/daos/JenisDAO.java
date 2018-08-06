@@ -50,7 +50,7 @@ public class JenisDAO {
         return this.fdao.getDataBy("SELECT * FROM jenis WHERE jenis_id= '"+jenisId+"'");
     }
     
-//    public String getAutoID(){
-//        return this.fdao.getAutoId("SELECT MAX(jenis_id)+1 AS MAXID FROM Jenis");
-//    }
+    public String getAutoID(){
+        return this.fdao.getAutoId("SELECT concat('JN',count(jenis_id)+1) AS id FROM Jenis");
+    }
 }

@@ -282,8 +282,9 @@ public class JenisView extends javax.swing.JInternalFrame {
      */
     public void reset() {
         idtxtfieldJenis.setEnabled(true);
+        idtxtfieldJenis.setEditable(false);
+        idtxtfieldJenis.setText(this.jenisController.getIdAuto());
         nametxtfieldJenis.setText("");
-        idtxtfieldJenis.setText("");
         findtxtfieldJenis.setText("");
         this.bindingTable();
         dropbtnJenis.setEnabled(false);

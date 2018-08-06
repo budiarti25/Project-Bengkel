@@ -59,6 +59,8 @@ public class KendaraanView extends javax.swing.JInternalFrame {
         idcomboJenis = new javax.swing.JComboBox<String>();
         dropbtnKendaraan = new javax.swing.JButton();
         savebtnKendaraan = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        txtkilometer = new javax.swing.JTextField();
         btnFind = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblKendaraan = new javax.swing.JTable();
@@ -110,6 +112,8 @@ public class KendaraanView extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel4.setText("Jarak Kilometer");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -124,9 +128,13 @@ public class KendaraanView extends javax.swing.JInternalFrame {
                     .addComponent(nopolisitxtfieldKendaraan)
                     .addComponent(warnatxtfieldKendaraan, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
                 .addGap(40, 40, 40)
-                .addComponent(jLabel3)
-                .addGap(25, 25, 25)
-                .addComponent(idcomboJenis, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(idcomboJenis, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtkilometer))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -142,12 +150,16 @@ public class KendaraanView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(nopolisitxtfieldKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(idcomboJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4)
+                    .addComponent(txtkilometer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(warnatxtfieldKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(idcomboJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(warnatxtfieldKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dropbtnKendaraan)
@@ -188,13 +200,11 @@ public class KendaraanView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnFind)
                 .addGap(28, 28, 28))
-            .addGroup(layout.createSequentialGroup()
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 10, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,7 +226,7 @@ public class KendaraanView extends javax.swing.JInternalFrame {
 
     private void savebtnKendaraanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnKendaraanActionPerformed
         this.saveOrEdit(nopolisitxtfieldKendaraan.getText(), warnatxtfieldKendaraan.getText(),
-                Integer.toString(idcomboJenis.getSelectedIndex()), nopolisitxtfieldKendaraan.isEnabled());
+                Integer.toString(idcomboJenis.getSelectedIndex()), txtkilometer.getText(), nopolisitxtfieldKendaraan.isEnabled());
     }//GEN-LAST:event_savebtnKendaraanActionPerformed
 
     private void dropbtnKendaraanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropbtnKendaraanActionPerformed
@@ -256,11 +266,13 @@ public class KendaraanView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField nopolisitxtfieldKendaraan;
     private javax.swing.JButton savebtnKendaraan;
     private javax.swing.JTable tblKendaraan;
+    private javax.swing.JTextField txtkilometer;
     private javax.swing.JTextField warnatxtfieldKendaraan;
     // End of variables declaration//GEN-END:variables
 
@@ -297,12 +309,12 @@ public class KendaraanView extends javax.swing.JInternalFrame {
         this.reset();
     }
 
-    public void saveOrEdit(String noPol, String warna, String jenisId, boolean isSave) {
+    public void saveOrEdit(String noPol, String warna, String jenisId, String kilom, boolean isSave) {
         boolean flag = true;
         if (isSave) {
-            flag = this.kendaraanController.save(nopolisitxtfieldKendaraan.getText(), warnatxtfieldKendaraan.getText(), this.getJenisId());
+            flag = this.kendaraanController.save(nopolisitxtfieldKendaraan.getText(), warnatxtfieldKendaraan.getText(), this.getJenisId(), txtkilometer.getText());
         } else {
-            flag = this.kendaraanController.edit(nopolisitxtfieldKendaraan.getText(), warnatxtfieldKendaraan.getText(), this.getJenisId());
+            flag = this.kendaraanController.edit(nopolisitxtfieldKendaraan.getText(), warnatxtfieldKendaraan.getText(), this.getJenisId(),txtkilometer.getText());
         }
         this.viewProccess.saveData(this, flag, isSave);
         this.reset();
@@ -322,6 +334,7 @@ public class KendaraanView extends javax.swing.JInternalFrame {
      */
     public void reset() {
         nopolisitxtfieldKendaraan.setEnabled(true);
+        nopolisitxtfieldKendaraan.setText("");
         warnatxtfieldKendaraan.setText("");
         idcomboJenis.setSelectedItem("");
         findtxtfieldKendaraan.setText("");

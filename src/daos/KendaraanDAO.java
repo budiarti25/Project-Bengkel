@@ -22,13 +22,13 @@ public class KendaraanDAO {
 
     public boolean insert(Kendaraan kendaraan) {
         return this.fdao.executeDML("INSERT INTO Kendaraan VALUES('"
-                + kendaraan.getNoPolisi()+ "','" + kendaraan.getWarnaKendaraan()+"','"+kendaraan.getJenisId().getJenisId()+"')");
+                + kendaraan.getNoPolisi()+ "','" + kendaraan.getWarnaKendaraan()+"','"+kendaraan.getJenisId().getJenisId()+"',"+kendaraan.getKilometer()+",0"+")");
     }
 
     public boolean update(Kendaraan kendaraan) {
         return this.fdao.executeDML("UPDATE Kendaraan SET warna='"
                 + kendaraan.getWarnaKendaraan() + "', jenis_id='"
-                + kendaraan.getJenisId().getJenisId() +"' WHERE no_polisi='" +kendaraan.getNoPolisi()+"'");
+                + kendaraan.getJenisId().getJenisId() +"', kilometer= "+kendaraan.getKilometer()+" WHERE no_polisi='" +kendaraan.getNoPolisi()+"'");
     }
 
     public boolean delete(String noPolisi) {
@@ -36,22 +36,19 @@ public class KendaraanDAO {
     }
 
     public List<Object[]> getAll() {
-        return this.fdao.getDatas("SELECT k.no_polisi, k.warna, j.nama_jenis FROM kendaraan k join jenis j on k.jenis_id=j.jenis_id");
+        return this.fdao.getDatas("SELECT k.no_polisi, k.warna, j.nama_jenis, k.kilometer,k.status FROM kendaraan k join jenis j on k.jenis_id=j.jenis_id");
     }
 
     public List<Object[]> getAllSort(String category, String sort) {
-        return this.fdao.getDatas("SELECT k.no_polisi, k.warna, j.nama_jenis FROM kendaraan k join jenis j on k.jenis_id=j.jenis_id ORDER BY " + category + " " + sort);
+        return this.fdao.getDatas("SELECT k.no_polisi, k.warna, j.nama_jenis, k.kilometer, k.status FROM kendaraan k join jenis j on k.jenis_id=j.jenis_id ORDER BY " + category + " " + sort);
     }
 
     public List<Object[]> search(String category, String data) {
-        return this.fdao.getDatas("SELECT k.no_polisi, k.warna, j.nama_jenis FROM kendaraan k join jenis j on k.jenis_id=j.jenis_id WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
+        return this.fdao.getDatas("SELECT k.no_polisi, k.warna, j.nama_jenis, k.kilometer,k.status FROM kendaraan k join jenis j on k.jenis_id=j.jenis_id WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
     }
     
     public Object[] getById(String noPolisi){
-        return this.fdao.getDataBy("SELECT k.no_polisi, k.warna, j.nama_jenis FROM kendaraan k join jenis j on k.jenis_id=j.jenis_id WHERE no_polisi='"+noPolisi+"'");
+        return this.fdao.getDataBy("SELECT k.no_polisi, k.warna, j.nama_jenis, k.kilometer FROM kendaraan k join jenis j on k.jenis_id=j.jenis_id WHERE no_polisi='"+noPolisi+"'");
     }
     
-//    public String getAutoID(){
-//        return this.fdao.getAutoId("SELECT MAX(jenis_id)+1 AS MAXID FROM Jenis");
-//    }
 }

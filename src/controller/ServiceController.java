@@ -26,16 +26,16 @@ public class ServiceController {
         this.kategoriDAO=new KategoriDAO(connection);
     }
 
-    public boolean save(String serviceId, String biayaService, String kategoriId) {
+    public boolean save(String serviceId, String biayaService, String kategoriId, String keterangan) {
         Object[] object = (Object[])this.kategoriDAO.getById(kategoriId);
-        Kategori kategori= new Kategori((String)object[0],(String)object[1],(String)object[2]);
-        return this.sdao.insert(new Service(serviceId, Integer.parseInt(biayaService), kategori));
+        Kategori kategori= new Kategori((String)object[0],(String)object[1]);
+        return this.sdao.insert(new Service(serviceId, Integer.parseInt(biayaService), kategori, keterangan));
     }
 
-    public boolean edit(String serviceId, String biayaService, String kategoriId) {
+    public boolean edit(String serviceId, String biayaService, String kategoriId,String keterangan) {
         Object[] object = (Object[])this.kategoriDAO.getById(kategoriId);
-        Kategori kategori= new Kategori((String)object[0],(String)object[1],(String)object[2]);
-        return this.sdao.update(new Service(serviceId, Integer.parseInt(biayaService), kategori));
+        Kategori kategori= new Kategori((String)object[0],(String)object[1]);
+        return this.sdao.update(new Service(serviceId, Integer.parseInt(biayaService), kategori, keterangan));
     }
 
     public boolean drop(String serviceId) {
@@ -56,5 +56,9 @@ public class ServiceController {
 
     public Object findById(String serviceId) {
         return this.sdao.getById(serviceId);
+    }
+    
+    public String getIdAuto(){
+        return this.sdao.getAutoID();
     }
 }

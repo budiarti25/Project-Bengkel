@@ -54,7 +54,7 @@ public class PelangganDAO {
         return this.fdao.getDataBy("SELECT pelanggan_id, nama_pelanggan, alamat, no_telp, keluhan, no_polisi from pelanggan WHERE pelanggan_id='"+pelangganId+"'");
     }
     
-//    public String getAutoID(){
-//        return this.fdao.getAutoId("SELECT MAX(jenis_id)+1 AS MAXID FROM Jenis");
-//    }
+    public String getAutoID(){
+        return this.fdao.getAutoId("SELECT concat('PL',count(pelanggan_id)+1) AS id FROM pelanggan");
+    }
 }

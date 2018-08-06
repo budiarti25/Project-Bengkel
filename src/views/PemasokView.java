@@ -280,7 +280,9 @@ public class PemasokView extends javax.swing.JInternalFrame {
      */
     public void reset() {
         idtxtfieldPemasok.setEnabled(true);
-       namatxtfieldPemasok.setText("");
+        idtxtfieldPemasok.setEditable(false);
+        idtxtfieldPemasok.setText(this.pemasokController.AutoId());
+        namatxtfieldPemasok.setText("");
         findtxtfieldPemasok.setText("");
         this.bindingTable();
         dropbtnPemasok.setEnabled(false);

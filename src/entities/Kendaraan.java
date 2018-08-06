@@ -14,14 +14,18 @@ public class Kendaraan {
     private String noPolisi;
     private String warnaKendaraan;
     private Jenis jenisId;
+    private int kilometer;
+    private int status;
 
     public Kendaraan() {
     }
 
-    public Kendaraan(String noPolisi, String warnaKendaraan, Jenis jenisId) {
+    public Kendaraan(String noPolisi, String warnaKendaraan, Jenis jenisId, int kilometer, int status) {
         this.noPolisi = noPolisi;
         this.warnaKendaraan = warnaKendaraan;
         this.jenisId = jenisId;
+        this.kilometer = kilometer;
+        this.status = status;
     }
 
     /**
@@ -65,6 +69,34 @@ public class Kendaraan {
     public void setJenisId(Jenis jenisId) {
         this.jenisId = jenisId;
     }
-    
+
+    /**
+     * @return the kilometer
+     */
+    public int getKilometer() {
+        return kilometer;
+    }
+
+    /**
+     * @param kilometer the kilometer to set
+     */
+    public void setKilometer(int kilometer) {
+        this.kilometer = kilometer;
+    }
+
+    /**
+     * @return the status
+     */
+    public int getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     
 }

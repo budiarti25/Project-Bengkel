@@ -13,14 +13,14 @@ import java.sql.Date;
  */
 public class Transaksi {
     private String transaksiId;
-    private Date tanggal;
+    private String tanggal;
     private Pegawai pegawaiId;
     private Pelanggan pelangganId;
 
     public Transaksi() {
     }
 
-    public Transaksi(String transaksiId, Date tanggal, Pegawai pegawaiId, Pelanggan pelangganId) {
+    public Transaksi(String transaksiId, String tanggal, Pegawai pegawaiId, Pelanggan pelangganId) {
         this.transaksiId = transaksiId;
         this.tanggal = tanggal;
         this.pegawaiId = pegawaiId;
@@ -44,14 +44,14 @@ public class Transaksi {
     /**
      * @return the tanggal
      */
-    public Date getTanggal() {
+    public String getTanggal() {
         return tanggal;
     }
 
     /**
      * @param tanggal the tanggal to set
      */
-    public void setTanggal(Date tanggal) {
+    public void setTanggal(String tanggal) {
         this.tanggal = tanggal;
     }
 

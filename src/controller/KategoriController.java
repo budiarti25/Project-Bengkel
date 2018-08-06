@@ -21,12 +21,12 @@ public class KategoriController {
         this.kdao=new KategoriDAO(connection);
     }
     
-    public boolean save(String kategoriId, String kategoriName, String keterangan) {
-        return this.kdao.insert(new Kategori(kategoriId, kategoriName, keterangan));
+    public boolean save(String kategoriId, String kategoriName) {
+        return this.kdao.insert(new Kategori(kategoriId, kategoriName));
     }
 
-    public boolean edit(String kategoriId, String kategoriName, String keterangan) {
-        return this.kdao.update(new Kategori(kategoriId, kategoriName, keterangan));
+    public boolean edit(String kategoriId, String kategoriName) {
+        return this.kdao.update(new Kategori(kategoriId, kategoriName));
     }
 
     public boolean drop(String kategoriId) {
@@ -47,5 +47,8 @@ public class KategoriController {
 
     public Object findById(String kategoriId) {
         return this.kdao.getById(kategoriId);
+    }
+    public String getIdAuto(){
+        return this.kdao.getAutoID();
     }
 }

@@ -51,8 +51,7 @@ public class PemasokController {
     }
 
     public String AutoId() {
-        return this.pemasokDAO.getAutoID();
-
+        return this.pemasokDAO.getIdAuto();
     }
 
 }

@@ -311,7 +311,7 @@ public class TransaksiView extends javax.swing.JInternalFrame {
     }
     
     private String getPlgId(){
-        return this.viewProccess.getIdfromComboBox(this.PlgTemp, idcomboPegawai.getSelectedIndex());
+        return this.viewProccess.getIdfromComboBox(this.PlgTemp, idcomboPelanggan.getSelectedIndex());
     }
     
      public void drop(String barangId) {
@@ -348,7 +348,8 @@ public class TransaksiView extends javax.swing.JInternalFrame {
      */
     public void reset() {
         idtxtfieldTransaksi.setEnabled(true);
-        idtxtfieldTransaksi.setText("");
+        idtxtfieldTransaksi.setEditable(false);
+        idtxtfieldTransaksi.setText(this.transaksiController.getIdAuto());
         jLabel6.setText("-");
         idcomboPegawai.setSelectedItem("");
         idcomboPelanggan.setSelectedItem("");

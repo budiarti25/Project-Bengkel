@@ -99,8 +99,8 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cmbket" max="32767" attributes="0"/>
                       <Component id="biayatxtfieldService" pref="133" max="32767" attributes="0"/>
+                      <Component id="kett" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               </Group>
@@ -121,7 +121,7 @@
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="idtxtfieldService" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cmbket" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="kett" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -191,12 +191,7 @@
             <Property name="text" type="java.lang.String" value="Keterangan"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cmbket">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="kett">
         </Component>
       </SubComponents>
     </Container>

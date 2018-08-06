@@ -51,8 +51,7 @@ public class PemasokDAO {
         return this.fdao.getDataBy("SELECT * FROM PEMASOK WHERE pemasok_id="+pemasokId);
     }
     
-    public String getAutoID(){
-        return this.fdao.getAutoId("SELECT MAX(pemasok_id)+1 AS MAXID FROM Pemasok");
-    }
-    
+    public String getIdAuto(){
+        return this.fdao.getAutoId("SELECT count(pemasok_id)+1 AS id FROM Pemasok");
+    }    
 }

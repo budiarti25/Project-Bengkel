@@ -26,16 +26,16 @@ public class KendaraanController {
         this.jdao = new JenisDAO(connection);
     }
 
-    public boolean save(String noPolisi, String warnaKendaraan, String jenisId) {
+    public boolean save(String noPolisi, String warnaKendaraan, String jenisId, String kiloM) {
         Object[] object = (Object[])this.jdao.getById(jenisId);
         Jenis jenis =new Jenis((String)object[0], (String)object[1]);
-        return this.kdao.insert((new Kendaraan(noPolisi, warnaKendaraan, jenis)));
+        return this.kdao.insert((new Kendaraan(noPolisi, warnaKendaraan, jenis, Integer.parseInt(kiloM),0)));
     }
 
-    public boolean edit(String noPolisi, String warnaKendaraan, String jenisId) {
+    public boolean edit(String noPolisi, String warnaKendaraan, String jenisId, String kiloM) {
         Object[] object = (Object[])this.jdao.getById(jenisId);
         Jenis jenis =new Jenis((String)object[0], (String)object[1]);
-        return this.kdao.update((new Kendaraan(noPolisi, warnaKendaraan, jenis)));
+        return this.kdao.update((new Kendaraan(noPolisi, warnaKendaraan, jenis, Integer.parseInt(kiloM),0)));
 
     }
 

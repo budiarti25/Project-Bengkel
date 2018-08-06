@@ -59,4 +59,8 @@ public class BarangController {
     public Object findById(String barangId) {
         return this.barangDAO.getById(barangId);
     }
+    
+    public String getIdAuto(){
+        return this.barangDAO.getAutoID();
+    }
 }

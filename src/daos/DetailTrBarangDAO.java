@@ -34,20 +34,20 @@ public class DetailTrBarangDAO {
                 +"' WHERE detail_barang_id='" +transaksiBarang.getDetailBarangId()+"'");
     }
 
-    public boolean delete(String transaksiId) {
-        return this.fdao.executeDML("DELETE FROM detail_transaksi_barang WHERE detail_barang_id='" + transaksiId+"'");
+    public boolean delete(String detailId) {
+        return this.fdao.executeDML("DELETE FROM detail_transaksi_barang WHERE detail_barang_id='" + detailId+"'");
     }
 
     public List<Object[]> getAll() {
-        return this.fdao.getDatas("SELECT * FROM detail_transaksi_barang");
+        return this.fdao.getDatas("SELECT dtb.DETAIL_BARANG_ID, b.NAMA_BARANG, pl.NAMA_PELANGGAN, pg.NAMA_PEGAWAI, dtb.JUMLAH_BELI from BENGKEL.DETAIL_TRANSAKSI_BARANG dtb join BENGKEL.BARANG b on dtb.BARANG_ID=b.BARANG_ID join BENGKEL.TRANSAKSI tr on dtb.TRANSAKSI_ID=tr.TRANSAKSI_ID join BENGKEL.PEGAWAI pg on tr.PEGAWAI_ID=pg.PEGAWAI_ID join BENGKEL.PELANGGAN pl on tr.PELANGGAN_ID=pl.PELANGGAN_ID");
     }
 
     public List<Object[]> getAllSort(String category, String sort) {
-        return this.fdao.getDatas("SELECT  FROM detail_transaksi_barang ORDER BY " + category + " " + sort);
+        return this.fdao.getDatas("SELECT dtb.DETAIL_BARANG_ID, b.NAMA_BARANG, pl.NAMA_PELANGGAN, pg.NAMA_PEGAWAI, dtb.JUMLAH_BELI from BENGKEL.DETAIL_TRANSAKSI_BARANG dtb join BENGKEL.BARANG b on dtb.BARANG_ID=b.BARANG_ID join BENGKEL.TRANSAKSI tr on dtb.TRANSAKSI_ID=tr.TRANSAKSI_ID join BENGKEL.PEGAWAI pg on tr.PEGAWAI_ID=pg.PEGAWAI_ID join BENGKEL.PELANGGAN pl on tr.PELANGGAN_ID=pl.PELANGGAN_ID ORDER BY " + category + " " + sort);
     }
 
     public List<Object[]> search(String category, String data) {
-        return this.fdao.getDatas("SELECT * FROM detail_transaksi_barang WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
+        return this.fdao.getDatas("SELECT dtb.DETAIL_BARANG_ID, b.NAMA_BARANG, pl.NAMA_PELANGGAN, pg.NAMA_PEGAWAI, dtb.JUMLAH_BELI from BENGKEL.DETAIL_TRANSAKSI_BARANG dtb join BENGKEL.BARANG b on dtb.BARANG_ID=b.BARANG_ID join BENGKEL.TRANSAKSI tr on dtb.TRANSAKSI_ID=tr.TRANSAKSI_ID join BENGKEL.PEGAWAI pg on tr.PEGAWAI_ID=pg.PEGAWAI_ID join BENGKEL.PELANGGAN pl on tr.PELANGGAN_ID=pl.PELANGGAN_ID WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
     }
     
     public Object[] getById(String detailId){

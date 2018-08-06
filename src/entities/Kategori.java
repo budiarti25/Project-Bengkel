@@ -12,15 +12,13 @@ package entities;
 public class Kategori {
     private String kategoriId;
     private String namaKategori;
-    private String katerangan;
 
     public Kategori() {
     }
 
-    public Kategori(String kategoriId, String namaKategori, String katerangan) {
+    public Kategori(String kategoriId, String namaKategori) {
         this.kategoriId = kategoriId;
         this.namaKategori = namaKategori;
-        this.katerangan = katerangan;
     }
 
     /**
@@ -50,22 +48,4 @@ public class Kategori {
     public void setNamaKategori(String namaKategori) {
         this.namaKategori = namaKategori;
     }
-
-    /**
-     * @return the katerangan
-     */
-    public String getKaterangan() {
-        return katerangan;
-    }
-
-    /**
-     * @param katerangan the katerangan to set
-     */
-    public void setKaterangan(String katerangan) {
-        this.katerangan = katerangan;
-    }
-
-    
-    
-    
 }

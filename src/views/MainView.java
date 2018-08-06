@@ -216,7 +216,7 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_mnDTBarangActionPerformed
 
     private void mnDTSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnDTSActionPerformed
-        this.viewProccess.callForm(dskbengkel, new DetailTransaksiServiceView());
+        this.viewProccess.callForm(dskbengkel, new DetailTransaksiServiceView(connection));
     }//GEN-LAST:event_mnDTSActionPerformed
 
     private void mnKategiriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnKategiriActionPerformed

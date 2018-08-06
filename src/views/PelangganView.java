@@ -60,8 +60,9 @@ public class PelangganView extends javax.swing.JInternalFrame {
         namatxtfieldPelanggan = new javax.swing.JTextField();
         alamattxtfieldPelanggan = new javax.swing.JTextField();
         telepontxtfieldPelanggan = new javax.swing.JTextField();
-        keluhantxtfieldPelanggan = new javax.swing.JTextField();
         nopolisicomboKendaraan = new javax.swing.JComboBox<String>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtkeluhan = new javax.swing.JTextArea();
         findcomboPelanggan = new javax.swing.JComboBox<String>();
         findtxtfieldPelanggan = new javax.swing.JTextField();
         btnFind = new javax.swing.JButton();
@@ -102,80 +103,78 @@ public class PelangganView extends javax.swing.JInternalFrame {
             }
         });
 
+        txtkeluhan.setColumns(20);
+        txtkeluhan.setRows(5);
+        jScrollPane2.setViewportView(txtkeluhan);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(alamattxtfieldPelanggan, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                    .addComponent(idtxtfieldPelanggan)
-                    .addComponent(namatxtfieldPelanggan))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel6))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jLabel4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(nopolisicomboKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addComponent(jLabel4)
+                        .addGap(44, 44, 44)
+                        .addComponent(telepontxtfieldPelanggan))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(telepontxtfieldPelanggan, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                            .addComponent(keluhantxtfieldPelanggan))
-                        .addGap(8, 8, 8))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(alamattxtfieldPelanggan, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                            .addComponent(idtxtfieldPelanggan)
+                            .addComponent(namatxtfieldPelanggan))))
+                .addGap(55, 55, 55)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nopolisicomboKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(276, 276, 276)
                 .addComponent(dropbtnPelanggan)
-                .addGap(28, 28, 28)
+                .addGap(30, 30, 30)
                 .addComponent(savebtnPelanggan)
-                .addGap(205, 205, 205))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(telepontxtfieldPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(keluhantxtfieldPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(18, 18, 18)
-                        .addComponent(nopolisicomboKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(idtxtfieldPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(namatxtfieldPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(alamattxtfieldPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel6)))
-                .addGap(28, 28, 28)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(savebtnPelanggan)
-                    .addComponent(dropbtnPelanggan))
+                    .addComponent(nopolisicomboKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(62, 62, 62))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(idtxtfieldPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(namatxtfieldPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(alamattxtfieldPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(telepontxtfieldPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dropbtnPelanggan)
+                    .addComponent(savebtnPelanggan))
                 .addContainerGap())
         );
 
@@ -266,7 +265,7 @@ public class PelangganView extends javax.swing.JInternalFrame {
     private void savebtnPelangganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnPelangganActionPerformed
         this.saveOrEdit(idtxtfieldPelanggan.getText(), namatxtfieldPelanggan.getText(), 
                 alamattxtfieldPelanggan.getText(), telepontxtfieldPelanggan.getText(),
-                keluhantxtfieldPelanggan.getText(), Integer.toString(nopolisicomboKendaraan.getSelectedIndex()),
+                txtkeluhan.getText(), Integer.toString(nopolisicomboKendaraan.getSelectedIndex()),
                 idtxtfieldPelanggan.isEnabled());
     }//GEN-LAST:event_savebtnPelangganActionPerformed
 
@@ -296,12 +295,13 @@ public class PelangganView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField keluhantxtfieldPelanggan;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField namatxtfieldPelanggan;
     private javax.swing.JComboBox<String> nopolisicomboKendaraan;
     private javax.swing.JButton savebtnPelanggan;
     private javax.swing.JTable tblPelanggan;
     private javax.swing.JTextField telepontxtfieldPelanggan;
+    private javax.swing.JTextArea txtkeluhan;
     // End of variables declaration//GEN-END:variables
 
 
@@ -319,7 +319,7 @@ public class PelangganView extends javax.swing.JInternalFrame {
     }
 
     private List<Object[]> getDataPol() {
-        return new KendaraanController(connection).bindingSort("no_polisi", "asc");
+        return new KendaraanController(connection).find("status", "0");
     }
 
     private void loadPol() {
@@ -330,9 +330,9 @@ public class PelangganView extends javax.swing.JInternalFrame {
         return this.viewProccess.getIdfromComboBox(this.NoPolTemp, nopolisicomboKendaraan.getSelectedIndex());
     }
     
-     public void drop(String barangId) {
+     public void drop(String pelangganId) {
         if (this.viewProccess.dropConfirm(this)) {
-            this.viewProccess.dropData(this, this.pelangganController.drop(barangId));
+            this.viewProccess.dropData(this, this.pelangganController.drop(pelangganId));
         }
         this.reset();
     }
@@ -358,8 +358,8 @@ public class PelangganView extends javax.swing.JInternalFrame {
         idtxtfieldPelanggan.setText(tblPelanggan.getValueAt(row, 0).toString());
         namatxtfieldPelanggan.setText(tblPelanggan.getValueAt(row, 1).toString());
         alamattxtfieldPelanggan.setText(tblPelanggan.getValueAt(row, 2).toString());
-        keluhantxtfieldPelanggan.setText(tblPelanggan.getValueAt(row, 3).toString());
-        telepontxtfieldPelanggan.setText(tblPelanggan.getValueAt(row, 4).toString());
+        txtkeluhan.setText(tblPelanggan.getValueAt(row, 4).toString());
+        telepontxtfieldPelanggan.setText(tblPelanggan.getValueAt(row, 3).toString());
         nopolisicomboKendaraan.setSelectedItem(tblPelanggan.getValueAt(row, 5).toString());
     }
 
@@ -368,6 +368,8 @@ public class PelangganView extends javax.swing.JInternalFrame {
      */
     public void reset() {
         idtxtfieldPelanggan.setEnabled(true);
+        idtxtfieldPelanggan.setEditable(false);
+        idtxtfieldPelanggan.setText(this.pelangganController.getIdAuto());
         nopolisicomboKendaraan.setSelectedItem("");
         findtxtfieldPelanggan.setText("");
         this.bindingTable();

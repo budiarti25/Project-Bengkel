@@ -23,13 +23,12 @@ public class KategoriDAO {
     
     public boolean insert(Kategori kategori) {
         return this.functionDAO.executeDML("INSERT INTO Kategori VALUES('"
-                + kategori.getKategoriId()+ "','" + kategori.getNamaKategori()+"','"+kategori.getKaterangan()+"')");
+                + kategori.getKategoriId()+ "','" + kategori.getNamaKategori()+"')");
     }
 
     public boolean update(Kategori kategori) {
         return this.functionDAO.executeDML("UPDATE Kategori SET nama_kategori='"
-                + kategori.getNamaKategori() + "', katerangan='"+ kategori.getKaterangan()
-                +"' WHERE ketegori_id='" +kategori.getKategoriId()+"'");
+                + kategori.getNamaKategori() + "' WHERE ketegori_id='" +kategori.getKategoriId()+"'");
     }
 
     public boolean delete(String kategoriId) {
@@ -50,5 +49,9 @@ public class KategoriDAO {
     
     public Object[] getById(String kategoriId){
         return this.functionDAO.getDataBy("SELECT * from kategori WHERE kategori_id='"+kategoriId+"'");
+    }
+    
+    public String getAutoID(){
+        return this.functionDAO.getAutoId("SELECT concat('KT',count(kategori_id)+1) AS id FROM kategori");
     }
 }

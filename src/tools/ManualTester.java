@@ -7,6 +7,7 @@ package tools;
 
 import controller.BarangController;
 import controller.KendaraanController;
+import controller.PegawaiController;
 import controller.PelangganController;
 import daos.PemasokDAO;
 import java.sql.Connection;
@@ -35,7 +36,10 @@ public class ManualTester {
         
         //System.out.println(new PemasokDAO(connection).getAll().size());
        // BarangController barangController=new BarangController(connection);
-        PelangganController pelangganController=new PelangganController(connection);
+        PegawaiController pegawaiController=new PegawaiController(connection);
+        System.out.println(pegawaiController.getIdAuto());
+
+        //Controller pelangganController=new PelangganController(connection);
         //System.out.println(barangController.save(barangId, barangName, Integer.toString(Stok), Integer.toString(Harga),  Integer.toString(pemasok)));
        // System.out.println(pelangganController.save(id, nama, alamat,tlp, keluhan, no_pol, jenis));
         

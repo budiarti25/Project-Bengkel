@@ -23,13 +23,13 @@ public class TransaksiDAO {
 
     public boolean insert(Transaksi transaksi) {
         return this.fdao.executeDML("INSERT INTO Transaksi VALUES('"
-                + transaksi.getTransaksiId() + "','" + transaksi.getTanggal() + "','" + transaksi.getPegawaiId().getPegawaiId()
+                + transaksi.getTransaksiId() + "',to_date('" + transaksi.getTanggal() + "','dd-mm-yyyy'),'" + transaksi.getPegawaiId().getPegawaiId()
                 + "','" + transaksi.getPelangganId().getPelangganId() + "')");
     }
 
     public boolean update(Transaksi transaksi) {
-        return this.fdao.executeDML("UPDATE Transaksi SET tanggal='"
-                + transaksi.getTanggal() + "', pegawai_id='"
+        return this.fdao.executeDML("UPDATE Transaksi SET tanggal= to_date('"
+                + transaksi.getTanggal() + "','dd-mm-yyyy'), pegawai_id='"
                 + transaksi.getPegawaiId().getPegawaiId() + "', pelanggan_id='" + transaksi.getPelangganId().getPelangganId()
                 + "' WHERE transaksi_id='" + transaksi.getTransaksiId() + "'");
     }
@@ -39,25 +39,16 @@ public class TransaksiDAO {
     }
 
     public List<Object[]> getAll() {
-        return this.fdao.getDatas("select t.transaksi_id, t.tanggal, pg.nama_pegawai, pl.nama_pelanggan, pl.no_telp, pl.keluhan, k.no_polisi, jn.nama_jenis \n"
-                + "from BENGKEL.TRANSAKSI t join BENGKEL.PEGAWAI pg on pg.pegawai_id=t.pegawai_id "
-                + "join BENGKEL.PELANGGAN pl on t.PELANGGAN_ID=pl.PELANGGAN_ID join BENGKEL.KENDARAAN k "
-                + "on pl.NO_POLISI=k.NO_POLISI join BENGKEL.JENIS jn on k.JENIS_ID=jn.JENIS_ID");
+        return this.fdao.getDatas("select t.TRANSAKSI_ID, to_char(t.TANGGAL,'dd-mm-yyyy'), pg.NAMA_PEGAWAI, pl.NAMA_PELANGGAN, pl.NO_TELP, pl.KELUHAN, k.NO_POLISI, jn.NAMA_JENIS from BENGKEL.TRANSAKSI t join BENGKEL.PEGAWAI pg on pg.pegawai_id=t.pegawai_id join BENGKEL.PELANGGAN pl on t.PELANGGAN_ID=pl.PELANGGAN_ID join BENGKEL.KENDARAAN k on pl.NO_POLISI=k.NO_POLISI join BENGKEL.JENIS jn on k.JENIS_ID=jn.JENIS_ID");
     }
 
     public List<Object[]> getAllSort(String category, String sort) {
-        return this.fdao.getDatas("select t.transaksi_id, t.tanggal, pg.nama_pegawai, pl.nama_pelanggan, pl.no_telp, pl.keluhan, k.no_polisi, jn.nama_jenis \n"
-                + "from BENGKEL.TRANSAKSI t join BENGKEL.PEGAWAI pg on pg.pegawai_id=t.pegawai_id "
-                + "join BENGKEL.PELANGGAN pl on t.PELANGGAN_ID=pl.PELANGGAN_ID join BENGKEL.KENDARAAN k "
-                + "on pl.NO_POLISI=k.NO_POLISI join BENGKEL.JENIS jn on k.JENIS_ID=jn.JENIS_ID "
+        return this.fdao.getDatas("select t.TRANSAKSI_ID, to_char(t.TANGGAL,'dd-mm-yyyy'), pg.NAMA_PEGAWAI, pl.NAMA_PELANGGAN, pl.NO_TELP, pl.KELUHAN, k.NO_POLISI, jn.NAMA_JENIS from BENGKEL.TRANSAKSI t join BENGKEL.PEGAWAI pg on pg.pegawai_id=t.pegawai_id join BENGKEL.PELANGGAN pl on t.PELANGGAN_ID=pl.PELANGGAN_ID join BENGKEL.KENDARAAN k on pl.NO_POLISI=k.NO_POLISI join BENGKEL.JENIS jn on k.JENIS_ID=jn.JENIS_ID "
                 + " ORDER BY " + category + " " + sort);
     }
 
     public List<Object[]> search(String category, String data) {
-        return this.fdao.getDatas("select t.transaksi_id, t.tanggal, pg.nama_pegawai, pl.nama_pelanggan, pl.no_telp, pl.keluhan, k.no_polisi, jn.nama_jenis \n"
-                + "from BENGKEL.TRANSAKSI t join BENGKEL.PEGAWAI pg on pg.pegawai_id=t.pegawai_id "
-                + "join BENGKEL.PELANGGAN pl on t.PELANGGAN_ID=pl.PELANGGAN_ID join BENGKEL.KENDARAAN k "
-                + "on pl.NO_POLISI=k.NO_POLISI join BENGKEL.JENIS jn on k.JENIS_ID=jn.JENIS_ID "
+        return this.fdao.getDatas("select t.TRANSAKSI_ID, to_char(t.TANGGAL,'dd-mm-yyyy'), pg.NAMA_PEGAWAI, pl.NAMA_PELANGGAN, pl.NO_TELP, pl.KELUHAN, k.NO_POLISI, jn.NAMA_JENIS from BENGKEL.TRANSAKSI t join BENGKEL.PEGAWAI pg on pg.pegawai_id=t.pegawai_id join BENGKEL.PELANGGAN pl on t.PELANGGAN_ID=pl.PELANGGAN_ID join BENGKEL.KENDARAAN k on pl.NO_POLISI=k.NO_POLISI join BENGKEL.JENIS jn on k.JENIS_ID=jn.JENIS_ID "
                 + " WHERE REGEXP_LIKE(" + category + ", '" + data + "','i')");
     }
 
@@ -65,7 +56,7 @@ public class TransaksiDAO {
         return this.fdao.getDataBy("SELECT * FROM transaksi WHERE transaksi_id='" + transaksiId + "'");
     }
 
-//    public String getAutoID(){
-//        return this.fdao.getAutoId("SELECT MAX(transaksi_id)+1 AS MAXID FROM Transaksi");
-//    }
+    public String getAutoID(){
+        return this.fdao.getAutoId("SELECT concat('TR',count(transaksi_id)+1) AS id FROM Transaksi");
+    }
 }

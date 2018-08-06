@@ -69,4 +69,7 @@ public class DetailBarangController {
         return this.trBarangDAO.getById(trbarangId);
     }
 
+//    public String getIdAuto(){
+//        return this.trBarangDAO.getAutoID();
+//    }
 }

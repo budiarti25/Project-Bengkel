@@ -13,14 +13,16 @@ public class Service {
     private String serviceId;
     private int biayaService;
     private Kategori kategoriId;
+    private String keterangan;
 
     public Service() {
     }
 
-    public Service(String serviceId, int biayaService, Kategori kategoriId) {
+    public Service(String serviceId, int biayaService, Kategori kategoriId, String keterangan) {
         this.serviceId = serviceId;
         this.biayaService = biayaService;
         this.kategoriId = kategoriId;
+        this.keterangan = keterangan;
     }
 
     /**
@@ -65,4 +67,19 @@ public class Service {
         this.kategoriId = kategoriId;
     }
 
+    /**
+     * @return the keterangan
+     */
+    public String getKeterangan() {
+        return keterangan;
+    }
+
+    /**
+     * @param keterangan the keterangan to set
+     */
+    public void setKeterangan(String keterangan) {
+        this.keterangan = keterangan;
+    }
+
+    
 }

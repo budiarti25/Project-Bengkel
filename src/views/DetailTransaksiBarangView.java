@@ -20,7 +20,7 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
     private final ViewProccess viewProccess;
     private final DetailBarangController detailBarangController;
     private final String[] header = {"Id", "Nama Pelanggan", "Nama Pegawai", "Nama Barang","Tanggal", "Jumlah Beli","Total Bayar" };
-    private final String[] category = {"detail_barang_id", "nama_pegawai", "nama_pegawai","nama_barang","tanggal", "jumlah_beli","total_bayar"};
+    private final String[] category = {"detail_barang_id", "nama_pegawai", "nama_pelanggan","nama_barang","tanggal", "jumlah_beli","total_bayar"};
     private final List<Object[]> TransTemp;
     private final List<Object[]> BarangTemp;
     private final Connection connection;
@@ -58,8 +58,9 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
         txtfieldJmlhBeli = new javax.swing.JTextField();
         idcomboBarang = new javax.swing.JComboBox<String>();
         idcomboTransaksi = new javax.swing.JComboBox<String>();
-        dropbtn = new javax.swing.JButton();
         savebtn = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        id = new javax.swing.JTextField();
         findcomboTransaksibarang = new javax.swing.JComboBox<String>();
         txtfieldFind = new javax.swing.JTextField();
         btnFind = new javax.swing.JButton();
@@ -80,52 +81,66 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Transaksi ID");
 
-        dropbtn.setText("Drop");
-
         savebtn.setText("Save");
+        savebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savebtnActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Id");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(dropbtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(savebtn))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtfieldJmlhBeli, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                            .addComponent(idcomboBarang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(idcomboTransaksi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(281, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtfieldJmlhBeli, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                    .addComponent(id))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(idcomboBarang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(idcomboTransaksi, 0, 135, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(savebtn)
+                .addGap(232, 232, 232))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtfieldJmlhBeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtfieldJmlhBeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(idcomboBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(idcomboTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(idcomboBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(idcomboTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dropbtn)
-                    .addComponent(savebtn)))
+                .addComponent(savebtn)
+                .addGap(76, 76, 76))
         );
 
         findcomboTransaksibarang.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +149,18 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
             }
         });
 
+        txtfieldFind.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtfieldFindKeyPressed(evt);
+            }
+        });
+
         btnFind.setText("Find");
+        btnFind.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFindActionPerformed(evt);
+            }
+        });
 
         tblDetailBarang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -144,6 +170,11 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
 
             }
         ));
+        tblDetailBarang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDetailBarangMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblDetailBarang);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -161,8 +192,8 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
+                    .addComponent(jScrollPane2)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -175,8 +206,8 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
                     .addComponent(btnFind))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -184,19 +215,39 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void findcomboTransaksibarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findcomboTransaksibarangActionPerformed
-        // TODO add your handling code here:
+       this.search(this.viewProccess.getCategory(this.category, findcomboTransaksibarang), txtfieldFind.getText());
     }//GEN-LAST:event_findcomboTransaksibarangActionPerformed
+
+    private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
+        this.saveOrEdit(id.getText(),Integer.toString(idcomboBarang.getSelectedIndex()), Integer.parseInt(txtfieldJmlhBeli.getText()),
+                Integer.toString(idcomboTransaksi.getSelectedIndex()), id.isEnabled());
+    }//GEN-LAST:event_savebtnActionPerformed
+
+    private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
+        this.search(this.viewProccess.getCategory(this.category, findcomboTransaksibarang), txtfieldFind.getText());
+    }//GEN-LAST:event_btnFindActionPerformed
+
+    private void txtfieldFindKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfieldFindKeyPressed
+        if (this.viewProccess.keyPressed(evt)) {
+            this.search(this.viewProccess.getCategory(this.category, findcomboTransaksibarang), txtfieldFind.getText());
+        }
+    }//GEN-LAST:event_txtfieldFindKeyPressed
+
+    private void tblDetailBarangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDetailBarangMouseClicked
+        this.mouseClick(tblDetailBarang.getSelectedRow());
+    }//GEN-LAST:event_tblDetailBarangMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFind;
-    private javax.swing.JButton dropbtn;
     private javax.swing.JComboBox<String> findcomboTransaksibarang;
+    private javax.swing.JTextField id;
     private javax.swing.JComboBox<String> idcomboBarang;
     private javax.swing.JComboBox<String> idcomboTransaksi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton savebtn;
@@ -241,43 +292,32 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
     private String getTrans() {
         return this.viewProccess.getIdfromComboBox(this.TransTemp, idcomboTransaksi.getSelectedIndex());
     }
-    
-     public void drop(String barangId) {
-        if (this.viewProccess.dropConfirm(this)) {
-            this.viewProccess.dropData(this, this.detailBarangController.drop(barangId));
-        }
-        this.reset();
-    }
 
-    public void saveOrEdit(String serviceId, int biaya, String serviceNama, boolean isSave) {
+    public void saveOrEdit(String IdDet, String barang, int jml, String Transaksi, boolean isSave) {
         boolean flag = true;
         if (isSave) {
-           // flag = this.detailBarangController.save();
+            flag = this.detailBarangController.save(IdDet, getBarangId(),jml, getTrans());
         } else {
-          //  flag = this.detailBarangController.edit();
+            flag = this.detailBarangController.edit(IdDet,getBarangId(),jml, getTrans());
         }
         this.viewProccess.saveData(this, flag, isSave);
         this.reset();
     }
 
     public void mouseClick(int row) {
-       // idtxtfieldService.setEnabled(false);
-        dropbtn.setEnabled(true);
-        //idtxtfieldService.setText(tblService.getValueAt(row, 0).toString());
-        idcomboBarang.setSelectedItem(tblDetailBarang.getValueAt(row, 1).toString());
-        idcomboTransaksi.setSelectedItem(tblDetailBarang.getValueAt(row, 2).toString());
-        txtfieldJmlhBeli.setText(tblDetailBarang.getValueAt(row, 3).toString());
+        id.setText(tblDetailBarang.getValueAt(row, 1).toString());
+        idcomboBarang.setSelectedItem(tblDetailBarang.getValueAt(row, 2).toString());
+        idcomboTransaksi.setSelectedItem(tblDetailBarang.getValueAt(row, 3).toString());
+        txtfieldJmlhBeli.setText(tblDetailBarang.getValueAt(row, 4).toString());
     }
 
     /**
      * funsi reset komponen
      */
     public void reset() {
-        //idtxtfieldService.setEnabled(true);
         idcomboBarang.setSelectedItem("");
         idcomboTransaksi.setSelectedItem("");
         txtfieldFind.setText("");
         this.bindingTable();
-        dropbtn.setEnabled(false);
     }
 }

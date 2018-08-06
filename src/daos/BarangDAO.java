@@ -56,8 +56,8 @@ public class BarangDAO {
                 + "FROM barang b join pemasok p on b.pemasok_id=p.pemasok_id WHERE barang_id="+barangId+"'");
     }
     
-//    public String getAutoID(){
-//        return this.fdao.getAutoId("SELECT MAX(jenis_id)+1 AS MAXID FROM Jenis");
-//    }
+    public String getAutoID(){
+        return this.fdao.getAutoId("SELECT concat('BR',count(barang_id)+1) AS id FROM Barang");
+    }
 
 }

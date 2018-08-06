@@ -52,7 +52,7 @@ public class PegawaiDAO {
         return this.fdao.getDataBy("SELECT * FROM pegawai WHERE pegawai_id='"+pegawaiId+"'");
     }
     
-//    public String getAutoID(){
-//        return this.fdao.getAutoId("SELECT MAX(pegawai_id)+1 AS MAXID FROM Pegawai");
-//    }
+    public String getAutoId(){
+        return this.fdao.getAutoId("SELECT concat('PG',count(pegawai_id)+1) AS ID FROM pegawai");
+    }
 }

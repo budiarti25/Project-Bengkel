@@ -347,7 +347,8 @@ public class BarangView extends javax.swing.JInternalFrame {
      */
     public void reset() {
         idtxtfieldBarang.setEnabled(true);
-        idtxtfieldBarang.setText("");
+        idtxtfieldBarang.setEditable(false);
+        idtxtfieldBarang.setText(this.barangController.getIdAuto());
         nametxtfieldBarang.setText("");
         idcomboPemasok.setSelectedItem("");
         findtxtfieldBarang.setText("");

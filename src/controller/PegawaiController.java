@@ -6,9 +6,7 @@
 package controller;
 
 import daos.PegawaiDAO;
-import daos.PeranDAO;
 import entities.Pegawai;
-import entities.Peran;
 import java.sql.Connection;
 import java.util.List;
 
@@ -19,11 +17,9 @@ import java.util.List;
 public class PegawaiController {
 
     private final PegawaiDAO pegawaiDAO;
-    private final PeranDAO peranDAO;
 
     public PegawaiController(Connection connection) {
         this.pegawaiDAO = new PegawaiDAO(connection);
-        this.peranDAO = new PeranDAO(connection);
     }
 
     public boolean save(String pegawaiId, String pegawaiName, String pegawaiAlamat, String pegawaiJenisKelamin) {
@@ -53,5 +49,9 @@ public class PegawaiController {
 
     public Object findById(String pegawaiId) {
         return this.pegawaiDAO.getById(pegawaiId);
+    }
+    
+     public String getIdAuto(){
+        return this.pegawaiDAO.getAutoId();
     }
 }

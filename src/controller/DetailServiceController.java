@@ -34,7 +34,7 @@ public class DetailServiceController {
     
     public boolean save(String detailId, String serviceId, String transaksiId) {
         Object[] object = (Object[])this.serviceDAO.getById(serviceId);
-        Service service = new Service((String)object[0],Integer.parseInt(object[1].toString()), null);
+        Service service = new Service((String)object[0],Integer.parseInt(object[1].toString()), null,(String)object[3]);
         Object[] object1 = (Object[])this.transaksiDAO.getById(transaksiId);
         Transaksi transaksi = new Transaksi((String)object1[0], null, null, null);
           return this.trServiceDAO.insert(new DetailTransaksiService(detailId, service, transaksi));
@@ -44,7 +44,7 @@ public class DetailServiceController {
 
     public boolean edit(String detailId, String serviceId, String transaksiId) {
         Object[] object = (Object[])this.serviceDAO.getById(serviceId);
-        Service service = new Service((String)object[0],Integer.parseInt(object[1].toString()), null);
+        Service service = new Service((String)object[0],Integer.parseInt(object[1].toString()), null,(String)object[3]);
         Object[] object1 = (Object[])this.transaksiDAO.getById(transaksiId);
         Transaksi transaksi = new Transaksi((String)object1[0], null, null, null);
           return this.trServiceDAO.update(new DetailTransaksiService(detailId, service, transaksi));
@@ -69,4 +69,8 @@ public class DetailServiceController {
     public Object findById(String trserviceId) {
         return this.trServiceDAO.getById(trserviceId);
     }
+    
+//    public String getIdAuto(){
+//        return this.trServiceDAO.getAutoID();
+//    }
 }

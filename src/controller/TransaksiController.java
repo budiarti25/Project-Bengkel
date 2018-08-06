@@ -14,6 +14,7 @@ import entities.Transaksi;
 import java.sql.Connection;
 import java.util.List;
 
+
 /**
  *
  * @author budiarti
@@ -33,21 +34,23 @@ public class TransaksiController {
     }
     
     public boolean save(String trnsaksiId, String tanggal, String pegawaiId, String pelangganId) {
+        //java.sql.Date date1=java.sql.Date.valueOf(tanggal);
         Object[] object = (Object[]) this.pegawaiDAO.getById(pegawaiId);
         Pegawai pegawai = new Pegawai((String) object[0], (String) object[1],(String) object[2], (String) object[3]);
         Object[] object1 = (Object[]) this.pelangganDAO.getById(pelangganId);
-        Pelanggan pelanggan = new Pelanggan((String) object[0], (String) object[1], (String) object[2], (String) object[3], (String) object[4], null);
-          return this.transaksiDAO.insert(new Transaksi(trnsaksiId, null, pegawai, pelanggan));
+        Pelanggan pelanggan = new Pelanggan((String) object1[0], (String) object1[1], (String) object1[2], (String) object1[3], (String) object1[4], null);
+          return this.transaksiDAO.insert(new Transaksi(trnsaksiId, tanggal, pegawai, pelanggan));
 //        Pemasok pemasok = (Pemasok) this.pdao.getById(Integer.parseInt(pemasokId));
 //        return this.barangDAO.insert((new Barang(barangId, barangName, Integer.parseInt(barangStok), Integer.parseInt(barangHarga), pemasok)));
     }
 
     public boolean edit(String trnsaksiId, String tanggal, String pegawaiId, String pelangganId) {
+        //java.sql.Date date1=java.sql.Date.valueOf(tanggal);
         Object[] object = (Object[]) this.pegawaiDAO.getById(pegawaiId);
         Pegawai pegawai = new Pegawai((String) object[0], (String) object[1],(String) object[2], (String) object[3]);
         Object[] object1 = (Object[]) this.pelangganDAO.getById(pelangganId);
-        Pelanggan pelanggan = new Pelanggan((String) object[0], (String) object[1], (String) object[2], (String) object[3], (String) object[4], null);
-          return this.transaksiDAO.insert(new Transaksi(trnsaksiId, null, pegawai, pelanggan));
+        Pelanggan pelanggan = new Pelanggan((String) object1[0], (String) object1[1], (String) object1[2], (String) object1[3], (String) object1[4], null);
+          return this.transaksiDAO.insert(new Transaksi(trnsaksiId, tanggal, pegawai, pelanggan));
     }
 
     public boolean drop(String trId) {
@@ -70,4 +73,7 @@ public class TransaksiController {
         return this.transaksiDAO.getById(trId);
     }
     
+    public String getIdAuto(){
+        return this.transaksiDAO.getAutoID();
+    }
 }

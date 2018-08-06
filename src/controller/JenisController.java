@@ -49,4 +49,8 @@ public class JenisController {
     public Object findById(String jenisId) {
         return this.jdao.getById(jenisId);
     }
+    
+    public String getIdAuto(){
+        return this.jdao.getAutoID();
+    }
 }

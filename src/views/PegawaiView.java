@@ -6,7 +6,6 @@
 package views;
 
 import controller.PegawaiController;
-import controller.PeranController;
 import java.sql.Connection;
 import java.util.List;
 
@@ -310,7 +309,7 @@ public class PegawaiView extends javax.swing.JInternalFrame {
         dropbtnPegawai.setEnabled(true);
         idtxtfieldPegawai.setText(tblPegawai.getValueAt(row, 0).toString());
         nametxtfieldPegawai.setText(tblPegawai.getValueAt(row, 1).toString());
-        alamattxtfieldPegawai.setText(tblPegawai.getValueAt(row, 2).toString());
+        alamattxtfieldPegawai.setText(tblPegawai.getValueAt(row, 3).toString());
     }
 
     /**
@@ -318,7 +317,8 @@ public class PegawaiView extends javax.swing.JInternalFrame {
      */
     public void reset() {
         idtxtfieldPegawai.setEnabled(true);
-        idtxtfieldPegawai.setText("");
+        idtxtfieldPegawai.setEditable(false);
+        idtxtfieldPegawai.setText(this.pegawaiController.getIdAuto());
         nametxtfieldPegawai.setText("");
         alamattxtfieldPegawai.setText("");
         findtxtfieldPegawai.setText("");
