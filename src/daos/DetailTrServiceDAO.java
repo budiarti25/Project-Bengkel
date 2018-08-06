@@ -39,15 +39,15 @@ public class DetailTrServiceDAO {
     }
 
     public List<Object[]> getAll() {
-        return this.fdao.getDatas("select dts.detail_service_id, pg.nama_pegawai, pl.nama_pelanggan,tr.tanggal, sr.keterangan,sr.biaya_service from BENGKEL.DETAIL_TRANSAKSI_SERVICE dts join BENGKEL.SERVICE sr on dts.SERVICE_ID=sr.SERVICE_ID join BENGKEL.TRANSAKSI tr on dts.TRANSAKSI_ID2=tr.TRANSAKSI_ID join BENGKEL.PEGAWAI pg on tr.PEGAWAI_ID=pg.PEGAWAI_ID join BENGKEL.PELANGGAN pl on tr.PELANGGAN_ID=pl.PELANGGAN_ID;");
+        return this.fdao.getDatas("select dts.detail_service_id, pg.nama_pegawai, pl.nama_pelanggan,tr.tanggal, sr.keterangan,sr.biaya_service from BENGKEL.DETAIL_TRANSAKSI_SERVICE dts join BENGKEL.SERVICE sr on dts.SERVICE_ID=sr.SERVICE_ID join BENGKEL.TRANSAKSI tr on dts.TRANSAKSI_ID2=tr.TRANSAKSI_ID join BENGKEL.PEGAWAI pg on tr.PEGAWAI_ID=pg.PEGAWAI_ID join BENGKEL.PELANGGAN pl on tr.PELANGGAN_ID=pl.PELANGGAN_ID");
     }
 
     public List<Object[]> getAllSort(String category, String sort) {
-        return this.fdao.getDatas("select dts.detail_service_id, pg.nama_pegawai, pl.nama_pelanggan,tr.tanggal, sr.keterangan,sr.biaya_service from BENGKEL.DETAIL_TRANSAKSI_SERVICE dts join BENGKEL.SERVICE sr on dts.SERVICE_ID=sr.SERVICE_ID join BENGKEL.TRANSAKSI tr on dts.TRANSAKSI_ID2=tr.TRANSAKSI_ID join BENGKEL.PEGAWAI pg on tr.PEGAWAI_ID=pg.PEGAWAI_ID join BENGKEL.PELANGGAN pl on tr.PELANGGAN_ID=pl.PELANGGAN_ID; ORDER BY " + category + " " + sort);
+        return this.fdao.getDatas("select dts.detail_service_id, pg.nama_pegawai, pl.nama_pelanggan,tr.tanggal, sr.keterangan,sr.biaya_service from BENGKEL.DETAIL_TRANSAKSI_SERVICE dts join BENGKEL.SERVICE sr on dts.SERVICE_ID=sr.SERVICE_ID join BENGKEL.TRANSAKSI tr on dts.TRANSAKSI_ID2=tr.TRANSAKSI_ID join BENGKEL.PEGAWAI pg on tr.PEGAWAI_ID=pg.PEGAWAI_ID join BENGKEL.PELANGGAN pl on tr.PELANGGAN_ID=pl.PELANGGAN_ID ORDER BY " + category + " " + sort);
     }
 
     public List<Object[]> search(String category, String data) {
-        return this.fdao.getDatas("select dts.detail_service_id, pg.nama_pegawai, pl.nama_pelanggan,tr.tanggal, sr.keterangan,sr.biaya_service from BENGKEL.DETAIL_TRANSAKSI_SERVICE dts join BENGKEL.SERVICE sr on dts.SERVICE_ID=sr.SERVICE_ID join BENGKEL.TRANSAKSI tr on dts.TRANSAKSI_ID2=tr.TRANSAKSI_ID join BENGKEL.PEGAWAI pg on tr.PEGAWAI_ID=pg.PEGAWAI_ID join BENGKEL.PELANGGAN pl on tr.PELANGGAN_ID=pl.PELANGGAN_ID; WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
+        return this.fdao.getDatas("select dts.detail_service_id, pg.nama_pegawai, pl.nama_pelanggan,tr.tanggal, sr.keterangan,sr.biaya_service from BENGKEL.DETAIL_TRANSAKSI_SERVICE dts join BENGKEL.SERVICE sr on dts.SERVICE_ID=sr.SERVICE_ID join BENGKEL.TRANSAKSI tr on dts.TRANSAKSI_ID2=tr.TRANSAKSI_ID join BENGKEL.PEGAWAI pg on tr.PEGAWAI_ID=pg.PEGAWAI_ID join BENGKEL.PELANGGAN pl on tr.PELANGGAN_ID=pl.PELANGGAN_ID WHERE REGEXP_LIKE("+category+", '"+data+"','i')");
     }
     
     public Object[] getById(String trDetailId){

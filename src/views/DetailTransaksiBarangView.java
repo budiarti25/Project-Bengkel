@@ -140,7 +140,7 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
                             .addComponent(idcomboTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(savebtn)
-                .addGap(76, 76, 76))
+                .addGap(44, 44, 44))
         );
 
         findcomboTransaksibarang.addActionListener(new java.awt.event.ActionListener() {
@@ -206,9 +206,9 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
                     .addComponent(btnFind))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -219,8 +219,7 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_findcomboTransaksibarangActionPerformed
 
     private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
-        this.saveOrEdit(id.getText(),Integer.toString(idcomboBarang.getSelectedIndex()), Integer.parseInt(txtfieldJmlhBeli.getText()),
-                Integer.toString(idcomboTransaksi.getSelectedIndex()), id.isEnabled());
+        this.viewProccess.saveData(this, this.detailBarangController.save(id.getText(), this.getBarangId(),Integer.parseInt(txtfieldJmlhBeli.getText()), this.getTrans()), true);
     }//GEN-LAST:event_savebtnActionPerformed
 
     private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
@@ -291,17 +290,6 @@ public class DetailTransaksiBarangView extends javax.swing.JInternalFrame {
 
     private String getTrans() {
         return this.viewProccess.getIdfromComboBox(this.TransTemp, idcomboTransaksi.getSelectedIndex());
-    }
-
-    public void saveOrEdit(String IdDet, String barang, int jml, String Transaksi, boolean isSave) {
-        boolean flag = true;
-        if (isSave) {
-            flag = this.detailBarangController.save(IdDet, getBarangId(),jml, getTrans());
-        } else {
-            flag = this.detailBarangController.edit(IdDet,getBarangId(),jml, getTrans());
-        }
-        this.viewProccess.saveData(this, flag, isSave);
-        this.reset();
     }
 
     public void mouseClick(int row) {
