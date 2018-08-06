@@ -17,7 +17,12 @@ public class DetailTransaksiBarang {
 
     public DetailTransaksiBarang() {
     }
-
+/**
+ * @param detailBarangId
+ * @param barangId
+ * @param jumlahBarang
+ * @param transaksiId 
+ */
     public DetailTransaksiBarang(String detailBarangId, Barang barangId, int jumlahBarang, Transaksi transaksiId) {
         this.detailBarangId = detailBarangId;
         this.barangId = barangId;

@@ -19,7 +19,12 @@ public class Transaksi {
 
     public Transaksi() {
     }
-
+/**
+ * @param transaksiId
+ * @param tanggal
+ * @param pegawaiId
+ * @param pelangganId 
+ */
     public Transaksi(String transaksiId, String tanggal, Pegawai pegawaiId, Pelanggan pelangganId) {
         this.transaksiId = transaksiId;
         this.tanggal = tanggal;

@@ -15,7 +15,10 @@ public class Jenis {
 
     public Jenis() {
     }
-
+/**
+ * @param jenisId
+ * @param jenisName 
+ */
     public Jenis(String jenisId, String jenisName) {
         this.jenisId = jenisId;
         this.jenisName = jenisName;

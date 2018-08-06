@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package entities;
-import entities.Jenis;
 
 /**
  *
@@ -19,7 +18,13 @@ public class Kendaraan {
 
     public Kendaraan() {
     }
-
+/**
+ * @param noPolisi
+ * @param warnaKendaraan
+ * @param jenisId
+ * @param kilometer
+ * @param status 
+ */
     public Kendaraan(String noPolisi, String warnaKendaraan, Jenis jenisId, int kilometer, int status) {
         this.noPolisi = noPolisi;
         this.warnaKendaraan = warnaKendaraan;

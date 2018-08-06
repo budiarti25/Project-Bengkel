@@ -16,7 +16,11 @@ public class DetailTransaksiService {
 
     public DetailTransaksiService() {
     }
-
+/**
+ * @param detailServiceId
+ * @param serviceId
+ * @param transaksiId 
+ */
     public DetailTransaksiService(String detailServiceId, Service serviceId, Transaksi transaksiId) {
         this.detailServiceId = detailServiceId;
         this.serviceId = serviceId;
