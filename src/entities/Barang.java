@@ -17,6 +17,7 @@ public class Barang {
     private int barangHarga;
     private Pemasok pemasok;
 
+    
     public Barang() {
     }
 /**
