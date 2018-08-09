@@ -19,7 +19,13 @@ public class Barang {
 
     public Barang() {
     }
-
+/**
+ * @param barangId
+ * @param barangName
+ * @param barangStok
+ * @param barangHarga
+ * @param pemasok 
+ */
     public Barang(String barangId, String barangName, int barangStok, int barangHarga, Pemasok pemasok) {
         this.barangId = barangId;
         this.barangName = barangName;

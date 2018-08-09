@@ -17,7 +17,12 @@ public class Pegawai {
 
     public Pegawai() {
     }
-
+/**
+ * @param pegawaiId
+ * @param pegawaiName
+ * @param pegawaiAlamat
+ * @param pegawaiJenisKelamin 
+ */
     public Pegawai(String pegawaiId, String pegawaiName, String pegawaiAlamat, String pegawaiJenisKelamin) {
         this.pegawaiId = pegawaiId;
         this.pegawaiName = pegawaiName;

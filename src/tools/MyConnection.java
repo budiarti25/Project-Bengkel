@@ -10,11 +10,15 @@ import java.sql.SQLException;
 import oracle.jdbc.pool.OracleDataSource;
 
 /**
- *
- * @author budiarti
+ * 
+ * @author kresna bayu
  */
 public class MyConnection {
     private Connection connection;
+    /**
+     * fungsi untuk memanggil koneksi database
+     * @return koneksi database system dengan schema bengkel
+     */
     public Connection getConnection(){
     try{
         OracleDataSource ods = new OracleDataSource();
@@ -23,7 +27,7 @@ public class MyConnection {
         ods.setPortNumber(1521);
         ods.setServiceName("XE");
         ods.setUser("system");
-        ods.setPassword("budiarti");
+        ods.setPassword("k1R3aw5G");
         connection = ods.getConnection();
         connection.createStatement().execute("alter session set "+"current_schema=bengkel");
     }

@@ -17,7 +17,13 @@ public class Service {
 
     public Service() {
     }
-
+/**
+ * 
+ * @param serviceId
+ * @param biayaService
+ * @param kategoriId
+ * @param keterangan 
+ */
     public Service(String serviceId, int biayaService, Kategori kategoriId, String keterangan) {
         this.serviceId = serviceId;
         this.biayaService = biayaService;

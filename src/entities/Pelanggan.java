@@ -19,7 +19,15 @@ public class Pelanggan {
 
     public Pelanggan() {
     }
-
+/**
+ * 
+ * @param pelangganId
+ * @param pelangganName
+ * @param pelangganAlamat
+ * @param pelangganTlp
+ * @param pelangganKeluhan
+ * @param noPolisi 
+ */
     public Pelanggan(String pelangganId, String pelangganName, String pelangganAlamat, String pelangganTlp, String pelangganKeluhan, Kendaraan noPolisi) {
         this.pelangganId = pelangganId;
         this.pelangganName = pelangganName;

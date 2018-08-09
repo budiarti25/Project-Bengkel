@@ -15,7 +15,10 @@ public class Pemasok {
 
     public Pemasok() {
     }
-
+/**
+ * @param pemasokId
+ * @param pemasokName 
+ */
     public Pemasok(int pemasokId, String pemasokName) {
         this.pemasokId = pemasokId;
         this.pemasokName = pemasokName;

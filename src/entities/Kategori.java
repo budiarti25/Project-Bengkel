@@ -15,7 +15,10 @@ public class Kategori {
 
     public Kategori() {
     }
-
+/**
+ * @param kategoriId
+ * @param namaKategori 
+ */
     public Kategori(String kategoriId, String namaKategori) {
         this.kategoriId = kategoriId;
         this.namaKategori = namaKategori;
