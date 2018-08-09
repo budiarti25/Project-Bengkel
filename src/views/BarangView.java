@@ -24,7 +24,8 @@ public class BarangView extends javax.swing.JInternalFrame {
     private final List<Object[]> PemasokTemp;
 
     /**
-     * Creates new form Master
+     * 
+     * @param connection 
      */
     public BarangView(Connection connection) {
         this.connection = connection;
@@ -287,6 +288,7 @@ public class BarangView extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblBarang;
     // End of variables declaration//GEN-END:variables
 
+    
     private void bindingTable() {
         this.viewProccess.viewTable(tblBarang, header,
                 this.barangController.bindingSort(category[0], "asc"));
@@ -319,6 +321,15 @@ public class BarangView extends javax.swing.JInternalFrame {
         this.reset();
     }
 
+    /**
+     * 
+     * @param barangId
+     * @param barangNama
+     * @param stok
+     * @param harga
+     * @param pemasok
+     * @param isSave 
+     */
     public void saveOrEdit(String barangId, String barangNama, int stok, int harga, int pemasok, boolean isSave) {
         boolean flag = true;
         if (isSave) {
@@ -332,6 +343,10 @@ public class BarangView extends javax.swing.JInternalFrame {
         this.reset();
     }
 
+    /**
+     * 
+     * @param row 
+     */
     public void mouseClick(int row) {
         idtxtfieldBarang.setEnabled(false);
         dropbtnBarang.setEnabled(true);

@@ -92,7 +92,7 @@ public class Barang {
     }
 
     /**
-     * @param pemasokId the pemasokId to set
+     * @param pemasok the pemasokId to set
      */
     public void setPemasok(Pemasok pemasok) {
         this.pemasok = pemasok;
